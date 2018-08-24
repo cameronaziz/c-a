@@ -39,7 +39,7 @@ const projects = [
   {
     title: 'Any Game Tickets',
     bg: 'linear-gradient(to right, #009245 0%, #FCEE21 100%)',
-    description: 'Develop ticking application by interfacing with APIs and rendering dynamic D3 SVGs',
+    description: 'Develop ticking application by interfacing with APIs and rendering dynamic D3 SVGs.',
     tech: [
       {
         icon: reactSVG,
@@ -62,7 +62,7 @@ const projects = [
   {
     title: 'Patient Pop',
     bg: 'linear-gradient(to right, #662D8C 0%, #ED1E79 100%)',
-    description: 'Design and engineer application to automate onboarding of new customers into AWS infrastructure',
+    description: 'Design and engineer application to automate onboarding of new customers into AWS infrastructure.',
     tech: [
       {
         icon: php,
