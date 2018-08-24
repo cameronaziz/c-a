@@ -1,7 +1,6 @@
 import styled from 'react-emotion';
 import { ParallaxLayer } from 'react-spring';
-import { rotate } from '../styles/animations';
-import triangle from '../images/triangle.svg';
+import fullTriangle from '../images/fullTriangle.svg';
 
 export const Divider = styled(ParallaxLayer)`
   ${tw('absolute w-full h-full')};
@@ -40,10 +39,10 @@ export const Title = styled.h1`
     content: '';
     width: 40px;
     height: 40px;
-    background: url(${triangle});
+    background: url(${fullTriangle});
     position: absolute;
     background-size: 40px;
-    animation: ${rotate} 4s linear infinite;
+    transform: rotate(90deg);
     left: -60px;
     top: 5px;
   }

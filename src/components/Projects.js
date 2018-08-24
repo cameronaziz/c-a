@@ -34,7 +34,7 @@ const projects = [
 const Projects = () => (
   <Content speed={0.4} offset={1}>
     <Inner>
-      <Title>Projects</Title>
+      <Title>Recent Projects</Title>
       <ProjectsWrapper>
         {projects.map(project => (
           <ProjectCard {...project}>{project.description}</ProjectCard>
