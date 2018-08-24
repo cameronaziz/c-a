@@ -9,6 +9,7 @@ import php from '../images/php.svg';
 import awscm from '../images/awscm.svg';
 import mongo from '../images/mongo.svg';
 import firebase from '../images/firebase.svg';
+import laravel from '../images/laravel.svg';
 
 const projects = [
   {
@@ -36,21 +37,6 @@ const projects = [
     ],
   },
   {
-    title: 'Patient Pop',
-    bg: 'linear-gradient(to right, #662D8C 0%, #ED1E79 100%)',
-    description: 'Automate onboarding of new customers into AWS infrastructure',
-    tech: [
-      {
-        icon: php,
-        name: 'PHP',
-      },
-      {
-        icon: awscm,
-        name: 'AWS Certificate Manager',
-      },
-    ],
-  },
-  {
     title: 'Any Game Tickets',
     bg: 'linear-gradient(to right, #009245 0%, #FCEE21 100%)',
     description: 'Develop ticking application by interfacing with APIs and rendering dynamic D3 SVGs',
@@ -74,9 +60,28 @@ const projects = [
     ],
   },
   {
+    title: 'Patient Pop',
+    bg: 'linear-gradient(to right, #662D8C 0%, #ED1E79 100%)',
+    description: 'Design and engineer application to automate onboarding of new customers into AWS infrastructure',
+    tech: [
+      {
+        icon: php,
+        name: 'PHP',
+      },
+      {
+        icon: awscm,
+        name: 'AWS Certificate Manager',
+      },
+      {
+        icon: laravel,
+        name: 'Laravel',
+      },
+    ],
+  },
+  {
     title: 'Precision Filter',
     bg: 'linear-gradient(to right, #D585FF 0%, #00FFEE 100%)',
-    description: 'Engineer internal tool to recieve products and pricing from vendor APIs.',
+    description: 'Engineer internal tool to recieve product pricing from vendors, place orders and track inventory.',
     tech: [
       {
         icon: reactSVG,
