@@ -94,7 +94,9 @@ export const AboutSub = styled.span`
 `;
 
 export const AboutDesc = styled.p`
-  ${tw('text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-6 md:pt-12 text-justify')};
+  ${tw('text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-6 md:pt-12 text-justify xxl:w-3/4')};
+  width: 80%;
+  margin: 0 auto;
 `;
 
 export const ContactText = styled.p`

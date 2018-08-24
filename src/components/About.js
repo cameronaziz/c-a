@@ -8,12 +8,12 @@ const About = () => (
       <Title>About</Title>
       <AboutHero>
         <Avatar src={avatar} alt="Cameron Aziz" />
-        <AboutSub>I'm a bomb dev.</AboutSub>
+        <AboutSub>I like to code.</AboutSub>
       </AboutHero>
       <AboutDesc>
-        Lorem ipsum dolor amet jean shorts hammock flannel heirloom. Hot chicken PBR&B health goth, narwhal jean shorts
-        four dollar toast plaid godard coloring book pitchfork 90's taiyaki meditation fanny pack. XOXO keytar sartorial
-        bespoke forage. PBR&B meggings taiyaki vinyl.
+        My passions for open source technologies have allowed me to take from conception to production. I am a trusted
+        communicator between technical and non-technical staff so that I can architect solutions that are both rapid to
+        deploy and easily scalable.
       </AboutDesc>
     </Inner>
   </Content>
