@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="124px" height="202px" viewBox="0 0 124 202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>logo_lockup_firebase_vertical</title>
-  <desc>Created with Sketch.</desc>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient x1="-0.034817707538604734" y1="0.1702667236328125" x2="1.0083333587646484" y2="0.9288680267333984" id="linearGradient-1">
       <stop stop-color="#FFFFFF" stop-opacity="0.1" offset="0"/>
       <stop stop-color="#FFFFFF" stop-opacity="0" offset="1"/>
     </linearGradient>
-    <path d="M91.2001643,31.8444925 C90.9978011,30.6478412 90.1399672,29.6625066 88.9753599,29.2890136 C87.8107526,28.9155205 86.5332397,29.2160429 85.6621124,30.0684226 L68.803631,46.9410864 L55.447153,21.8339168 C54.9115426,20.7585402 53.8065557,20.0777668 52.5966851,20.0777668 C51.3868145,20.0777668 50.2818276,20.7585402 49.7462172,21.8339168 L42.4978846,35.5580931 L24.1734483,1.81276553 C22.7074934,-0.932069726 18.5539545,-0.205495688 18.0653029,2.86226136 L0.47384401,114.754663 L47.6287268,140.992059 C50.5961043,142.606794 54.1900562,142.606794 57.1574337,140.992059 L104.719526,114.754663 L91.2001643,31.8444925 Z" id="path-2"/>
   </defs>
-  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="matrix(2.495347, 0, 0, 2.495347, 93.601974, 71.298309)">
     <g id="styleguide" transform="translate(-256.000000, -1246.000000)">
       <g id="Group-16" transform="translate(40.000000, 1187.000000)">
         <g id="Group-9" transform="translate(114.000000, 0.000000)">

@@ -74,10 +74,9 @@ const projects = [
     ],
   },
   {
-    title: 'Precision Filter Products',
+    title: 'Precision Filter',
     bg: 'linear-gradient(to right, #D585FF 0%, #00FFEE 100%)',
-    description:
-      'Engineer internal tool to recieve products and pricing from vendor APIs.',
+    description: 'Engineer internal tool to recieve products and pricing from vendor APIs.',
     tech: [
       {
         icon: reactSVG,
