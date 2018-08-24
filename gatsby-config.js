@@ -16,6 +16,12 @@ module.exports = {
         fonts: ['poppins'],
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: ['gatsby-remark-copy-linked-files'],
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     {
