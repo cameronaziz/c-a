@@ -96,9 +96,9 @@ class ProjectCard extends Component {
 
   render() {
     const { libaryText } = this.state;
-    const { link, children, title, bg, tech } = this.props;
+    const { children, title, bg, tech } = this.props;
     return (
-      <Wrapper href={link} rel="noopener noreferrer" bg={bg}>
+      <Wrapper bg={bg}>
         <Text>{children}</Text>
         <CardTitle>{title}</CardTitle>
         {tech &&
@@ -126,7 +126,6 @@ export default ProjectCard;
 
 ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
-  link: PropTypes.string,
   children: PropTypes.string.isRequired,
   bg: PropTypes.string.isRequired,
   tech: PropTypes.arrayOf(
@@ -137,6 +136,5 @@ ProjectCard.propTypes = {
 };
 
 ProjectCard.defaultProps = {
-  link: '#',
   tech: undefined,
 };

@@ -7,7 +7,7 @@ const projects = [
   {
     title: 'Any Game Tickets',
     bg: 'linear-gradient(to right, #145ad4 0%, #bad414 100%)',
-    description: 'Develop ticking application by interfacing with APIs and rendering dynamic D3 SVGs.',
+    description: 'Develop event ticketing application by interfacing with APIs and rendering dynamic D3 SVGs.',
     tech: ['nodejs', 'react', 'mongo', 'graphql', 'd3'],
   },
   {
