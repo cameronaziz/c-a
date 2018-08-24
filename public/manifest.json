@@ -1,0 +1,8 @@
+{
+  "main.js": "render-page.js",
+  "main.js.map": "render-page.js.map",
+  "static/avatar.png": "static/avatar-37cecfa83ca52b5b4bf515660ff70a3b.png",
+  "static/firebase.svg": "static/firebase-d58c07b2954205eb760c3bdb14c09182.svg",
+  "static/mongo.svg": "static/mongo-510790e65b412e6a9299e54a88b0ecd7.svg",
+  "static/php.svg": "static/php-cdf5b5e1a8dd51c1130b4d4a86048b8a.svg"
+}
