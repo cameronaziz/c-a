@@ -32,7 +32,7 @@ const projects = [
 ];
 
 const Projects = () => (
-  <Content speed={0.4} offset={1}>
+  <Content speed={0.4} offset={1.3}>
     <Inner>
       <Title>Recent Projects</Title>
       <ProjectsWrapper>
