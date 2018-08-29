@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
 import d3SVG from '../images/d3.svg';
 import reactSVG from '../images/react.svg';
 import graphQLSVG from '../images/graphQL.svg';
@@ -8,7 +8,9 @@ import awscm from '../images/awscm.svg';
 import mongo from '../images/mongo.svg';
 import firebase from '../images/firebase.svg';
 import laravel from '../images/laravel.svg';
+import redux from '../images/redux.svg';
 import nodejs from '../images/nodejs.svg';
+import apollo from '../images/apollo.svg';
 
 import { Wrapper, Text, CardTitle } from './styled';
 
@@ -18,6 +20,12 @@ const libaries = [
     title: 'React',
     icon: reactSVG,
     text: 'React is a JavaScript library for building user interfaces developed by Facebook.',
+  },
+  {
+    name: 'apollo',
+    title: 'Apollo',
+    icon: apollo,
+    text: 'Apollo Client is a fully-featured caching GraphQL client with integrations for React, Angular, and more.',
   },
   {
     name: 'graphql',
@@ -68,6 +76,12 @@ const libaries = [
     title: 'NodeJS',
     icon: nodejs,
     text: "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
+  },
+  {
+    name: 'redux',
+    title: 'Redux',
+    icon: redux,
+    text: 'Redux is an open-source JavaScript library for managing application state.',
   },
   {
     name: 'firebase',

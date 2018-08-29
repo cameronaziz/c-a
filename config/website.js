@@ -8,7 +8,7 @@ module.exports = {
   siteUrl: 'https://cameronaziz.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteLogo: '/logos/logo-1024.png', // Used for SEO and manifest
-  siteDescription: 'Playful & Colorful One-Page website with Parallax effect',
+  siteDescription: 'Los Angeles based software engineer who enjoys React, MongoDB and GraphQL.',
 
   siteFBAppID: '123456789', // Facebook App ID
   userTwitter: '@cameronaziz', // Twitter Username
