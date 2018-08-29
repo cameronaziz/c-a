@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Content, Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub } from './styled';
-import avatar from '../images/avatar.png';
-import resume from '../../static/Cameron Aziz - Resume.pdf';
+import { Content, Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub } from '../styled';
+import avatar from '../../images/avatar.png';
+import resume from '../../../static/Cameron Aziz - Resume.pdf';
 
 const About = () => (
   <Content speed={0.4} offset={2.5}>

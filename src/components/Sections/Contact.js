@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Content, Inner, Title, ContactText, Footer } from './styled';
+import { Content, Inner, Title, ContactText, Footer } from '../styled';
 
 const Header = () => (
   <Content speed={0.4} offset={3}>

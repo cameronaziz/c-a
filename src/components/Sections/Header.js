@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content, Hero, BigTitle, Subtitle } from './styled';
+import { Content, Hero, BigTitle, Subtitle } from '../styled';
 
 const Header = () => (
   <Content speed={0.4} offset={0}>
