@@ -25,7 +25,7 @@ const projects = [
   },
   {
     title: 'Patient Pop',
-    bg: 'linear-gradient(to right, #009245 0%, #FCEE21 100%)',
+    bg: 'linear-gradient(to right, #2ECC40 0%, #FCEE21 100%)',
     description: 'Design and engineer application to automate onboarding of new customers into AWS infrastructure.',
     tech: ['php', 'awscm', 'laravel'],
   },
