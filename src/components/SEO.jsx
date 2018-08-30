@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import config from '../../config/website';
 
-const SEO = () => {
-  const title = config.siteTitle;
+const SEO = ({ title }) => {
+  const siteTitle = `${title}${config.siteTitle}`;
   const description = config.siteDescription;
   const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
   const image = config.siteUrl + realPrefix + config.siteLogo;
@@ -20,7 +21,7 @@ const SEO = () => {
   return (
     <Helmet>
       <html lang={config.siteLanguage} />
-      <title>{title}</title>
+      <title>{siteTitle}</title>
       <meta charSet="utf-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,17 +36,21 @@ const SEO = () => {
       <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
       <meta property="og:locale" content={config.ogLanguage} />
       <meta property="og:site_name" content={config.ogSiteName} />
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="fb:app_id" content={config.siteFBAppID ? config.siteFBAppID : ''} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={config.userTwitter ? config.userTwitter : ''} />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={siteTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
     </Helmet>
   );
+};
+
+SEO.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 export default SEO;

@@ -17,23 +17,31 @@ const routes = [
   {
     hash: '#projects',
     location: 1.2,
+    title: 'Projects',
   },
   {
     hash: '#about',
     location: 2.4,
+    title: 'About',
   },
   {
     hash: '#contact',
     location: 3,
+    title: 'Contact',
   },
 ];
 
 class Index extends Component {
+  state = { title: '' };
+
   componentDidMount() {
     const { hash } = this.props.location;
     if (hash.startsWith('#')) {
       const route = routes.find(element => element.hash === hash);
       if (route) {
+        this.setState({
+          title: `${route.title} - `,
+        });
         this.scroll(route.location);
       }
     }
@@ -44,9 +52,10 @@ class Index extends Component {
   scroll = to => this.parallax.current.scrollTo(to);
 
   render() {
+    const { title } = this.state;
     return (
       <Fragment>
-        <SEO />
+        <SEO title={title} />
         <Parallax ref={this.parallax} pages={4}>
           <HeaderSVG />
           <Header />
