@@ -3,7 +3,7 @@ import React from 'react';
 import { Content, Inner, Title, ContactText, Footer } from './styled';
 
 const Header = () => (
-  <Content speed={0.4} offset={3}>
+  <Content speed={0.4} offset={3.2}>
     <Inner>
       <Title>Get in touch</Title>
       <ContactText>

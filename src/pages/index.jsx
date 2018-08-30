@@ -27,13 +27,13 @@ const routes = [
   },
   {
     hash: '#contact',
-    location: 3,
+    location: 3.1,
     title: 'Contact',
   },
 ];
 
 const findRoute = hash => {
-  if (hash.startsWith('#')) {
+  if (hash && hash.startsWith('#')) {
     const route = routes.find(element => element.hash === hash);
     if (route) {
       return route;
