@@ -100,7 +100,7 @@ export const AboutDesc = styled.p`
 
 export const AboutLink = styled.p`
   ${tw(
-    'text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-6 md:pt-12 text-justify xxl:w-3/4 visible sm:invisible md:visible lg:visible xl:visible'
+    'text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-6 md:pt-12 text-justify xxl:w-3/4 visible sm:invisible md:invisible lg:visible xl:visible'
   )};
   width: 80%;
   margin: 0 auto;
