@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import PropTypes from 'prop-types';
 import { Parallax } from 'react-spring';
 import 'typeface-cantata-one';
 import 'typeface-open-sans';
@@ -31,19 +32,34 @@ const routes = [
   },
 ];
 
+const findRoute = hash => {
+  if (hash.startsWith('#')) {
+    const route = routes.find(element => element.hash === hash);
+    if (route) {
+      return route;
+    }
+  }
+  return undefined;
+};
+
 class Index extends Component {
   state = { title: '' };
 
+  componentWillMount() {
+    const { hash } = this.props.location;
+    const route = findRoute(hash);
+    if (route) {
+      this.setState({
+        title: `${route.title} - `,
+      });
+    }
+  }
+
   componentDidMount() {
     const { hash } = this.props.location;
-    if (hash.startsWith('#')) {
-      const route = routes.find(element => element.hash === hash);
-      if (route) {
-        this.setState({
-          title: `${route.title} - `,
-        });
-        this.scroll(route.location);
-      }
+    const route = findRoute(hash);
+    if (route) {
+      this.scroll(route.location);
     }
   }
 
@@ -71,5 +87,11 @@ class Index extends Component {
     );
   }
 }
+
+Index.propTypes = {
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+  }).isRequired,
+};
 
 export default Index;
