@@ -1,4 +1,4 @@
-import react from '../projectLibraries/anyGameTickets/modalForm';
+import react from '../projectLibraries/anyGameTickets/form/modalForm';
 
 export default [
   {

@@ -57,14 +57,12 @@ class ProjectCard extends Component {
                 </span>
               );
             })}
-          {libraryText && (
-            <ButtonContainer>
-              <CardButton onClick={toggleModal}>See {buttonText} Code</CardButton>
-            </ButtonContainer>
-          )}
-          <div style={{ height: '25px' }}>
+          <div style={{ height: '65px' }}>
             <Text>{libraryText}</Text>
           </div>
+          <ButtonContainer>
+            {libraryText && <CardButton onClick={toggleModal}>See {buttonText} Code</CardButton>}
+          </ButtonContainer>
         </div>
       </Wrapper>
     );

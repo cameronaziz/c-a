@@ -140,7 +140,6 @@ export const CardTech = styled.div`
 export const CardBackground = styled.div`
   ${tw('rounded')};
   position: absolute;
-  background-image: url(${props => props.bg});
   top: 10%;
   left: 5%;
   width: 90%;
@@ -157,7 +156,5 @@ export const CardButton = styled.button`
 `;
 
 export const ButtonContainer = styled.span`
-  ${tw('relative visible sm:invisible md:invisible lg:visible xl:visible')};
-  left: 15px;
-  bottom: 20px;
+  ${tw('relative visible sm:invisible md:visible lg:visible xl:visible')};
 `;
