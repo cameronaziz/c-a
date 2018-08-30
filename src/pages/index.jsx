@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Parallax } from 'react-spring';
 import 'typeface-cantata-one';
 import 'typeface-open-sans';
+import ReactGA from 'react-ga';
 
 import SEO from '../components/SEO';
 import Header from '../components/Header';
@@ -56,6 +57,8 @@ class Index extends Component {
   }
 
   componentDidMount() {
+    ReactGA.initialize('UA-48396791-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
     const { hash } = this.props.location;
     const route = findRoute(hash);
     if (route) {

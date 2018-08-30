@@ -116,10 +116,12 @@ class ProjectCard extends Component {
         <Text>{children}</Text>
         <CardTitle>{title}</CardTitle>
         {tech &&
-          tech.map(item => {
+          tech.map((item, index) => {
             const libary = libaries.find(e => e.name === item);
             return (
               <span
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
                 onMouseEnter={() => {
                   this.hoverItem(libary);
                 }}
@@ -142,11 +144,7 @@ ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   bg: PropTypes.string.isRequired,
-  tech: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-    })
-  ),
+  tech: PropTypes.arrayOf(PropTypes.string),
 };
 
 ProjectCard.defaultProps = {

@@ -36,8 +36,11 @@ const Projects = () => (
     <Inner>
       <Title>Recent Projects</Title>
       <ProjectsWrapper>
-        {projects.map(project => (
-          <ProjectCard {...project}>{project.description}</ProjectCard>
+        {projects.map((project, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <ProjectCard key={index} {...project}>
+            {project.description}
+          </ProjectCard>
         ))}
       </ProjectsWrapper>
     </Inner>
