@@ -13,9 +13,11 @@ const About = () => (
         <AboutSub>I like to code.</AboutSub>
       </AboutHero>
       <AboutDesc>
-        My passions for open source technologies have allowed me to take from conception to production. I am a trusted
-        communicator between technical and non-technical staff so that I can architect solutions that are both rapid to
-        deploy and easily scalable.
+        My passions for open source technologies have allowed me to take products and applications from conception to
+        production. I am a trusted communicator between technical and non-technical staff which allows me to architect
+        solutions that are both rapid to deploy and easily scalable. I am a full stack engineer specializing in
+        JavaScript. I have worked on devops, backend and frontend teams individually and I enjoy web technologies such
+        as React and D3.
       </AboutDesc>
       <AboutDesc>
         <a
