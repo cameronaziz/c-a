@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import fileDownload from 'js-file-download';
 
-import { Content, Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub, AboutLink } from './styled';
+import { Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub, AboutLink } from './styled';
 import avatar from '../images/avatar.png';
 import resume from '../../static/Cameron Aziz - Resume.pdf';
 
@@ -10,7 +10,7 @@ const downloadPDF = () => {
 };
 
 const About = () => (
-  <Content speed={0.4} offset={2.8}>
+  <Fragment>
     <Inner>
       <Title>About</Title>
       <AboutHero>
@@ -28,7 +28,7 @@ const About = () => (
         as React and D3.
       </AboutDesc>
     </Inner>
-  </Content>
+  </Fragment>
 );
 
 export default About;

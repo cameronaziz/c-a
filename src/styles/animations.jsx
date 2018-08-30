@@ -20,13 +20,12 @@ const wave = keyframes`
     d: path("M 0 100 Q 150 350 400 200 Q 650 50 800 300 L 800 0 L 0 0 L 0 100 Z");
   }
 `;
-
-const upDownAnimation = keyframes`
+const upDownAnimation = y => keyframes`
   from {
     transform: translateY(0);
   }
   to {
-    transform: translateY(30px);
+    transform:  translateY(${y}px)
   }
 `;
 
@@ -40,15 +39,17 @@ const upDownWideAnimation = keyframes`
 `;
 
 export const UpDown = styled.div`
-  animation: ${upDownAnimation} 4s ease-in-out infinite alternate;
   ${tw('pin absolute')};
+  animation: ${props => upDownAnimation(props && props.offset ? props.offset : '30')}
+    ${props => (props && props.speed ? props.speed : '4')}s ease-in-out infinite alternate;
 `;
 
 export const UpDownWide = styled.div`
-  animation: ${upDownWideAnimation} 18s ease-in-out infinite alternate;
+  animation: ${upDownWideAnimation} ${props => (props && props.speed ? props.speed : '18')}s ease-in-out infinite
+    alternate;
   ${tw('pin absolute')};
 `;
 
 export const waveAnimation = css`
-  animation: ${wave} 20s linear infinite alternate;
+  animation: ${wave} ${props => (props && props.speed ? props.speed : '20')}s linear infinite alternate;
 `;

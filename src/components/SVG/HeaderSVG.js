@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import { Divider } from '../styled';
 import { UpDown, UpDownWide } from '../../styles/animations';
 import SVG from './SVG';
 import { hidden } from '../../styles/utils';
 import { colors } from '../../../tailwind';
 
 const HeaderSVG = () => (
-  <Divider speed={0.2} offset={0}>
-    <UpDown>
+  <Fragment>
+    <UpDown speed={12} offset={400}>
       <SVG icon="triangle" className={hidden} width={48} stroke={colors.orange} left="10%" top="20%" />
       <SVG icon="hexa" width={48} stroke={colors.red} left="60%" top="70%" />
       <SVG icon="box" width={6} fill={colors['grey-darker']} left="60%" top="15%" />
@@ -33,7 +32,7 @@ const HeaderSVG = () => (
     <SVG icon="box" width={12} fill={colors['grey-darkest']} left="40%" top="30%" />
     <SVG icon="hexa" width={16} stroke={colors['grey-darker']} left="10%" top="50%" />
     <SVG icon="hexa" width={8} stroke={colors['grey-darker']} left="80%" top="70%" />
-  </Divider>
+  </Fragment>
 );
 
 export default HeaderSVG;

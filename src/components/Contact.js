@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import { Content, Inner, Title, ContactText, Footer } from './styled';
+import { Inner, Title, ContactText, Footer } from './styled';
 
-const Header = () => (
-  <Content speed={0.4} offset={3.2}>
+const Contact = () => (
+  <Fragment>
     <Inner>
       <Title>Get in touch</Title>
       <ContactText>
@@ -15,10 +15,11 @@ const Header = () => (
         <a href="https://www.github.com/cameronaziz/" target="_blank" rel="noopener noreferrer">
           Github
         </a>
+        .
       </ContactText>
     </Inner>
     <Footer>&copy; 2018 by Cameron Aziz</Footer>
-  </Content>
+  </Fragment>
 );
 
-export default Header;
+export default Contact;

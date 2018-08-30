@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import ProjectCard from './ProjectCard';
-import { Content, Inner, Title, ProjectsWrapper } from './styled';
+import { Inner, Title, ProjectsWrapper } from './styled';
 
 const projects = [
   {
@@ -32,7 +32,7 @@ const projects = [
 ];
 
 const Projects = () => (
-  <Content speed={0.4} offset={1.3}>
+  <Fragment>
     <Inner>
       <Title>Recent Projects</Title>
       <ProjectsWrapper>
@@ -44,7 +44,7 @@ const Projects = () => (
         ))}
       </ProjectsWrapper>
     </Inner>
-  </Content>
+  </Fragment>
 );
 
 export default Projects;
