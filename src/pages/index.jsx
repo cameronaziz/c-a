@@ -28,7 +28,7 @@ const routes = [
   },
   {
     hash: '#contact',
-    location: 3.1,
+    location: 3,
     title: 'Contact',
   },
 ];
