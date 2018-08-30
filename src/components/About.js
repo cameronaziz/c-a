@@ -5,7 +5,7 @@ import avatar from '../images/avatar.png';
 import resume from '../../static/Cameron Aziz - Resume.pdf';
 
 const About = () => (
-  <Content speed={0.4} offset={2.5}>
+  <Content speed={0.4} offset={2.8}>
     <Inner>
       <Title>About</Title>
       <AboutHero>

@@ -22,7 +22,7 @@ const routes = [
   },
   {
     hash: '#about',
-    location: 2.4,
+    location: 2.7,
     title: 'About',
   },
   {
