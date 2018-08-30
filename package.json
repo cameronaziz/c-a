@@ -21,6 +21,7 @@
     "gatsby-source-filesystem": "^2.0.0-alpha.15",
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^2.0.1-13",
+    "js-file-download": "^0.4.1",
     "postcss": "^6.0.22",
     "postcss-cli": "^5.0.0",
     "prop-types": "^15.6.1",
