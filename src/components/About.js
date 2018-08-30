@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Content, Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub } from './styled';
+import { Content, Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub, AboutLink } from './styled';
 import avatar from '../images/avatar.png';
 import resume from '../../static/Cameron Aziz - Resume.pdf';
 
@@ -19,10 +19,10 @@ const About = () => (
         JavaScript. I have worked on devops, backend and frontend teams individually and I enjoy web technologies such
         as React and D3.
       </AboutDesc>
-      <AboutDesc>
+      <AboutLink>
         <a
           style={{
-            color: 'inherit',
+            // color: 'inherit',
             textDecoration: 'inherit',
           }}
           href={resume}
@@ -30,7 +30,7 @@ const About = () => (
         >
           Click to get my resume.
         </a>
-      </AboutDesc>
+      </AboutLink>
     </Inner>
   </Content>
 );

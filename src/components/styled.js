@@ -98,6 +98,18 @@ export const AboutDesc = styled.p`
   margin: 0 auto;
 `;
 
+export const AboutLink = styled.p`
+  ${tw(
+    'text-grey-light text-lg md:text-xl lg:text-2xl font-sans pt-6 md:pt-12 text-justify xxl:w-3/4 visible sm:invisible md:visible lg:visible xl:visible'
+  )};
+  width: 80%;
+  margin: 0 auto;
+  a {
+    color: #e07628;
+    text-decoration: none;
+  }
+`;
+
 export const ContactText = styled.p`
   ${tw('text-grey-light font-sans text-xl md:text-2xl lg:text-3xl')};
   a {
