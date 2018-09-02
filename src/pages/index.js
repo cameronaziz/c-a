@@ -5,46 +5,28 @@ import { Parallax } from 'react-spring';
 import 'typeface-cantata-one';
 import 'typeface-open-sans';
 
-import routes from './routes';
+import findRoute from '../routes';
 import SEO from '../components/SEO';
-import Header from '../components/Header';
+import Modal from '../components/Modal';
 import Projects from '../components/Projects';
-import About from '../components/About';
-import Contact from '../components/Contact';
+import { Header, About, Contact } from '../components/Sections';
 import { DividerMiddle, Divider, Content } from '../components/styled';
 import { HeaderSVG, MidSVG, LowerSVG, BottomSVG, FooterSVG } from '../components/SVG';
 import '../styles/global';
 import '../../tailwind.custom.css';
 
-const findRoute = hash => {
-  if (hash && hash.startsWith('#')) {
-    const route = routes.find(element => element.hash === hash);
-    if (route) {
-      return route;
-    }
-  }
-  return undefined;
-};
+/**
+ * The homepage of the application.
+ *
+ * @class Index
+ */
 
 class Index extends Component {
   state = {
-      title: '',
-      modalVisible: false,
-      example: undefined,
+    title: '',
+    modalVisible: true,
+    example: undefined,
   };
-  
-  setExample = exmplae => {
-      this.setState({
-          example,
-      })
-  }
-  
-  toggleModal = () => {
-      const { modalVisible } = this.state;
-      this.setState({
-          modalVisible: !modalVisible,
-      })
-  }
 
   componentWillMount() {
     const { hash } = this.props.location;
@@ -66,13 +48,25 @@ class Index extends Component {
     }
   }
 
+  setExample = example => {
+    this.setState({
+      example,
+    });
+  };
+
+  toggleModal = () => {
+    const { modalVisible } = this.state;
+    this.setState({
+      modalVisible: !modalVisible,
+    });
+  };
+
   parallax = React.createRef();
 
   scroll = to => this.parallax.current.scrollTo(to);
 
   render() {
-    const { title } = this.state;
-        const { modalVisible, example } = this.state;
+    const { title, modalVisible, example } = this.state;
     return (
       <Fragment>
         <SEO title={title} />
@@ -84,7 +78,7 @@ class Index extends Component {
             <Header />
           </Content>
           <DividerMiddle bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)" speed={-0.2} offset={1.1} />
-          <Content speed={0.4} offset={1.3}>
+          <Content speed={0.4} offset={0.8}>
             <Projects />
           </Content>
           <Divider speed={0.1} offset={1}>
@@ -95,30 +89,29 @@ class Index extends Component {
             <LowerSVG />
           </Divider>
           <Content speed={0.4} offset={2.4}>
-            <About />
+            <About toggleModal={this.toggleModal} />
           </Content>
           <Divider fill="#23262b" speed={0.2} offset={3}>
             <BottomSVG />
           </Divider>
-          <Content speed={0.4} offset={3.2}>
+          <Content speed={0.4} offset={3}>
             <Contact />
           </Content>
           <Divider speed={0.1} offset={3}>
             <FooterSVG />
           </Divider>
         </Parallax>
-                {modalVisible && <Modal toggleModal={this.toggleModal} modalData={example} />}
+        {modalVisible && <Modal toggleModal={this.toggleModal} modalData={example} />}
       </Fragment>
     );
   }
 }
 
 Index.propTypes = {
+  /** The window location. */
   location: PropTypes.shape({
     hash: PropTypes.string,
   }).isRequired,
 };
 
 export default Index;
-
-    const { modalVisible, example } = this.state;
