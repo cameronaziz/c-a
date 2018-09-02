@@ -1,27 +1,42 @@
-
-export const buildTree = (arr, index) => {
+export const buildTree = (arr, index, path) => {
   if (typeof index !== 'undefined') {
     buildTree.index = index;
   }
-  return arr.map(element => {
-    // eslint-disable-next-line no-param-reassign
+  return arr.map((element, i) => {
     buildTree.index += 1;
-    if (!element.items) {
+    if (!element.children) {
       return {
+        path: [...path, i],
         elementIndex: buildTree.index,
+        offset: buildTree.index,
         type: 'file',
         ...element,
       };
     }
     return {
+      path: [...path, i],
       elementIndex: buildTree.index,
       label: element.label,
-      children: buildTree(element.items),
+      offset: buildTree.index,
       type: 'folder',
-      isOpen: false,
       name: element.name,
     };
   });
+};
+
+export const setOffset = (tree, offset) => {
+  if (typeof offset !== 'undefined') {
+    setOffset.offset = offset;
+  }
+  tree.map(element => {
+    setOffset.offset += 1;
+    element.offset = setOffset.offset;
+    if (element.isOpen) {
+      return setOffset(element.children, setOffset.offset);
+    }
+    return null;
+  });
+  return tree;
 };
 
 const searchShortcuts = (tree, shortcuts, depth, paths) => {

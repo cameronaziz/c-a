@@ -36,7 +36,7 @@ class WhyNotification extends Component {
           </div>
           {visible && (
             <div>
-              <p className="font-bold">Why can't I see all the code?</p>
+              <p className="font-bold">Why can&apos;t I see all the code?</p>
               <p className="text-sm">
                 This code was written for an organization that does not have their codebase public.
               </p>

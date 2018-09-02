@@ -19,7 +19,7 @@ export default {
     node,
     {
       label: '5',
-      items: [
+      children: [
         {
           label: '6.js',
           code: seatingChart.code,
@@ -34,7 +34,7 @@ export default {
     },
     {
       label: '8',
-      items: [
+      children: [
         {
           label: '9.js',
           code: seatingChart.code,

@@ -9,7 +9,7 @@ import typeDefs from './apollo/typeDefs';
 export default {
   label: 'Node',
   name: 'node',
-  items: [
+  children: [
     {
       label: 'server.js',
       ...server,
@@ -24,7 +24,7 @@ export default {
     },
     {
       label: 'apollo',
-      items: [
+      children: [
         {
           label: 'defaults.js',
           ...defaults,

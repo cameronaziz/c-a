@@ -1,14 +1,11 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import { fromJS } from 'immutable';
 
 import { BackButton, CloseButton } from './Buttons';
 import FileExplorer from './FileExplorer';
 import { FileTreeContainer, ModalContainer, ModalContent, LibraryLinksContainer, Elements, LibraryLinksOffset } from './styled';
-import dataInput from '../../data/projectLibraries/anyGameTickets';
 import CodeExplorer from './CodeExplorer';
-import { buildTree, findLink, findShortcuts } from './util';
-import { findElement, findStatus } from './FileExplorer/util';
+import { buildTree, findLink, findShortcuts, setOffset } from './util';
 import WhyNotification from './WhyNotification';
 import LibraryLinks from './LibraryLinks';
 
@@ -24,20 +21,20 @@ class Modal extends Component {
     shortcuts: [],
     data: {},
     tree: [],
-    rawTree: [],
     stack: [],
+    selectedPath: undefined,
   };
 
   componentWillMount() {
-    if (!dataInput) {
-      return;
-    }
-    this.setState({
-      data: dataInput,
-    });
-    this.renderChart(dataInput);
     if (this.props.modalData) {
-      this.addToStack(this.props.modalData);
+      const { modalData } = this.props;
+      const tree = buildTree(modalData.tree, -1, []);
+      const shortcuts = findShortcuts(tree, modalData.shortcuts, 0);
+      this.setState({
+        data: modalData,
+        shortcuts,
+        tree,
+      });
     }
   }
 
@@ -77,13 +74,13 @@ class Modal extends Component {
     }
   };
 
-  click = line => {
+  clickInlineLink = line => {
     const { stack, tree } = this.state;
     const currentCode = stack[stack.length - 1];
     const data = currentCode.links.find(link => link.line === line);
     const newPage = findLink(data.location, tree, 0);
     if (newPage) {
-      this.addToStack({ code: newPage });
+      this.selectElement(newPage.path);
     }
   };
 
@@ -96,69 +93,38 @@ class Modal extends Component {
     });
   };
 
-  recusiveOpen = tree => {
-    for (let i = 0; i < tree.length; i += 1) {
-      this.index += 1;
-      tree[i].offset = this.index;
-      if (tree[i].isOpen && tree[i].children) {
-        this.recusiveOpen(tree[i].children);
+  findElement = (path, arr) => {
+    if (path.length === 1) {
+      return arr[path[0]];
+    }
+    const nextPath = path.slice(1);
+    return this.findElement(nextPath, arr[path[0]].children);
+  }
+
+  selectElement = (path) => {
+    this.setState(prevState => {
+      prevState.selectedPath = path;
+      const prevElement = this.findElement(path, prevState.tree);
+      const dataElement = this.findElement(path, this.props.modalData.tree);
+      if (dataElement.children) {
+        const children = buildTree(dataElement.children, -1, path);
+        prevElement.children = children;
+        prevElement.isOpen = !prevElement.isOpen;
+        setOffset(prevState.tree, -1);
+      } else {
+        this.addToStack({ code: prevElement });
       }
-    }
-    return tree;
-  };
-
-  offsetOpen = tree => {
-    this.index = -1;
-    return this.recusiveOpen(tree);
-  };
-
-  selectElement = index => {
-    const { tree } = this.state;
-    const element = findElement(tree, index, []);
-    const status = findStatus(element.path, tree);
-    const elementPath = [];
-    for (let j = 0; j <= element.path.length - 1; j += 1) {
-      this.setState(prevState => {
-        const stateTree = j === 0 ? this.state.rawTree : prevState.tree;
-        elementPath.push(element.path[j]);
-        const immutable = fromJS(stateTree);
-        const newStatus = j === element.path.length - 1 ? !status : true;
-        let newTree = immutable.setIn([...elementPath, 'isOpen'], newStatus).toJS();
-        elementPath.push('children');
-        if (j === element.path.length - 1) {
-          elementPath.pop();
-          const data = fromJS(newTree)
-            .getIn(elementPath)
-            .toJS();
-          if (data.code) {
-            this.addToStack({ code: data });
-          }
-          newTree = this.offsetOpen(newTree);
-        }
-        return {
-          tree: newTree,
-        };
-      });
-    }
-  };
-
-  renderChart = data => {
-    const tree = this.offsetOpen(buildTree(data.tree, -1));
-    const shortcuts = findShortcuts(tree, data.shortcuts, 0);
-    this.setState({
-      shortcuts,
-      tree,
-      rawTree: tree,
+      return prevState;
     });
   };
 
+
   render() {
     const {
-      stack, tree, data, shortcuts,
+      stack, tree, data, shortcuts, selectedPath,
     } = this.state;
     const { toggleModal } = this.props;
     const current = stack[stack.length - 1] || {};
-    console.log(tree);
     return (
       <Fragment>
         <ModalContainer
@@ -181,16 +147,15 @@ class Modal extends Component {
               <FileTreeContainer shorten={!!data.isLimited} >
                 {tree.length > 0 && (
                 <FileExplorer
+                  selectedPath={selectedPath}
                   current={current}
-                  offsetOpen={this.offsetOpen}
                   tree={tree}
-                  size="100"
                   selectElement={this.selectElement}
                 />
               )}
               </FileTreeContainer>
               {data.isLimited && <WhyNotification />}
-              <CodeExplorer current={current} click={this.click} />
+              <CodeExplorer current={current} clickInlineLink={this.clickInlineLink} />
             </Elements>
             {stack.length > 1 && <BackButton goBack={this.goBack} />}
             <CloseButton toggleModal={toggleModal} />
@@ -202,7 +167,11 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  modalData: PropTypes.shape({}),
+  modalData: PropTypes.shape({
+    tree: PropTypes.arrayOf(PropTypes.shape({
+
+    })),
+  }),
   toggleModal: PropTypes.func.isRequired,
 };
 

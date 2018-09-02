@@ -6,7 +6,6 @@
   "license": "MIT",
   "dependencies": {
     "babel-plugin-tailwind": "^0.1.10",
-    "d3-scale": "^2.1.2",
     "emotion": "^9.1.3",
     "emotion-server": "^9.1.3",
     "esdoc": "^1.1.0",
@@ -55,16 +54,15 @@
     "develop": "gatsby develop -o",
     "build": "gatsby build",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "lintsrc": "eslint src/. --ext .js,.jsx --ignore-path .gitignore --fix",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
     "predevelop": "postcss tailwind.css -o tailwind.custom.css",
     "prebuild": "postcss tailwind.css -o tailwind.custom.css"
   },
   "devDependencies": {
-    "@storybook/react": "^3.4.10",
     "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",

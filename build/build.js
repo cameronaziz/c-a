@@ -3,7 +3,7 @@ const path = require('path');
 const format = require('./template');
 const lucentFile = require('./lucentFile');
 
-const directory = '../src/components';
+const directory = '../src/components/SVG';
 const output = '../output';
 
 const excluded = [

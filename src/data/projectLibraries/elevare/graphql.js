@@ -61,4 +61,4 @@ export default `
       isActive: { type: GraphQLBoolean },
       ...commonFields.timestamps,
     }),
-  });`
+  });`;

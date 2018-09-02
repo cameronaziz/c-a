@@ -165,9 +165,7 @@ export const CardBackground = styled.div`
 `;
 
 export const CardButton = styled.button`
-  ${tw(
-    'bg-white border border-blue-dark hover:bg-blue-dark text-blue-dark hover:text-white font-bold py-2 px-4 rounded-full'
-  )};
+  ${tw('bg-white border border-blue-dark hover:bg-blue-dark text-blue-dark hover:text-white font-bold py-2 px-4 rounded-full')};
   outline: none;
 `;
 

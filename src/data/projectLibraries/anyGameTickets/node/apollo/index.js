@@ -126,21 +126,6 @@ export const getClient = (tokens) => {
   return new ApolloClient(clientConfig);
 };`;
 
-// const links = [
-//   {
-//     line: 10,
-//     code: defaults,
-//   },
-//   {
-//     line: 11,
-//     code: resolvers,
-//   },
-//   {
-//     line: 12,
-//     code: typeDefs,
-//   },
-// ];
-
 const links = [
   {
     line: 10,
@@ -150,12 +135,12 @@ const links = [
   {
     line: 11,
     Location: ['node', 'apollo', 'resolvers'],
-    code: defaults,
+    code: resolvers,
   },
   {
     line: 12,
     Location: ['node', 'apollo', 'typeDefs'],
-    code: defaults,
+    code: typeDefs,
   },
 ];
 

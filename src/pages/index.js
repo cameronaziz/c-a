@@ -2,10 +2,11 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactGA from 'react-ga';
 import { Parallax } from 'react-spring';
-import 'typeface-cantata-one';
-import 'typeface-open-sans';
+import 'typeface-cantata-one'; // eslint-disable-line import/extensions
+import 'typeface-open-sans'; // eslint-disable-line import/extensions
 
 import findRoute from '../routes';
+import dataInput from '../data/projectLibraries/anyGameTickets';
 import SEO from '../components/SEO';
 import Modal from '../components/Modal';
 import Projects from '../components/Projects';
@@ -24,13 +25,18 @@ import '../../tailwind.custom.css';
 class Index extends Component {
   state = {
     title: '',
-    modalVisible: true,
-    example: undefined,
+    modalVisible: false,
+    modalData: undefined,
   };
 
   componentWillMount() {
     const { hash } = this.props.location;
     const route = findRoute(hash);
+    if (dataInput) {
+      this.setState({
+        modalData: dataInput,
+      });
+    }
     if (route) {
       this.setState({
         title: `${route.title} - `,
@@ -66,7 +72,7 @@ class Index extends Component {
   scroll = to => this.parallax.current.scrollTo(to);
 
   render() {
-    const { title, modalVisible, example } = this.state;
+    const { title, modalVisible, modalData } = this.state;
     return (
       <Fragment>
         <SEO title={title} />
@@ -101,7 +107,7 @@ class Index extends Component {
             <FooterSVG />
           </Divider>
         </Parallax>
-        {modalVisible && <Modal toggleModal={this.toggleModal} modalData={example} />}
+        {modalVisible && <Modal toggleModal={this.toggleModal} modalData={modalData} />}
       </Fragment>
     );
   }

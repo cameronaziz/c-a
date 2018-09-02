@@ -1,15 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Document } from 'react-pdf';
+// import { Document } from 'react-pdf';
 
 import { Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub, AboutLink } from '../styled';
 import avatar from '../../images/avatar.png';
-import resume from '../../../static/Cameron Aziz - Resume.pdf';
+// import resume from '../../../static/Cameron Aziz - Resume.pdf';
 import InteractiveElement from '../Common/InteractiveElement';
-
-// const downloadPDF = () => {
-//   fileDownload(resume, 'Cameron Aziz - Resume.pdf');
-// };
 
 const About = ({ toggleModal }) => (
   <Fragment>

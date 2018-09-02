@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { calculateIconSize } from '../util';
 
-const File = ({ size, fillColor }) => (
+const File = ({ size, fill }) => (
   <svg
     version="1.1"
     id="Capa_1"
@@ -12,7 +12,7 @@ const File = ({ size, fillColor }) => (
     y="0px"
     viewBox={calculateIconSize(size)}
     xmlSpace="preserve"
-    fill={fillColor}
+    fill={fill}
   >
     <g>
       <path d="M42.5,22h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S43.052,22,42.5,22z" />
@@ -26,13 +26,13 @@ const File = ({ size, fillColor }) => (
 );
 
 File.propTypes = {
-  fillColor: PropTypes.string,
+  fill: PropTypes.string,
   size: PropTypes.number,
 };
 
 File.defaultProps = {
   size: undefined,
-  fillColor: undefined,
+  fill: undefined,
 };
 
 export default File;

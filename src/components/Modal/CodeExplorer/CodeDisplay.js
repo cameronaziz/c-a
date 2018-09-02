@@ -7,7 +7,7 @@ import { createLineStyle } from '../util';
 
 /**
  * Code Display component.
- * @reactProps {function} click - Function to be called when a user clicks on a link.
+ * @reactProps {function} clickInlineLink - Function to be called when a user clicks on a link.
  */
 
 class CodeDisplay extends Component {
@@ -21,7 +21,7 @@ class CodeDisplay extends Component {
 
   render() {
     const { hoveredLine } = this.state;
-    const { current, click } = this.props;
+    const { current, clickInlineLink } = this.props;
     docco.cursor = 'default';
     return (
       <SyntaxHighlighter
@@ -30,7 +30,7 @@ class CodeDisplay extends Component {
         lineProps={lineNumber => ({
           style: createLineStyle(lineNumber, current, hoveredLine),
           onClick: () => {
-            click(lineNumber);
+            clickInlineLink(lineNumber);
           },
           onMouseOver: () => {
             this.hoverLine(lineNumber);
@@ -50,7 +50,7 @@ class CodeDisplay extends Component {
 }
 
 CodeDisplay.propTypes = {
-  click: PropTypes.func.isRequired,
+  clickInlineLink: PropTypes.func.isRequired,
   current: PropTypes.shape({
     code: PropTypes.string,
   }).isRequired,

@@ -20,7 +20,7 @@ const LibraryLinks = ({
         };
         if (shortcut) {
           select = selectElement;
-          index = shortcut.elementIndex;
+          index = shortcut.path;
           style.cursor = 'pointer';
         }
         return (
@@ -35,6 +35,7 @@ const LibraryLinks = ({
 );
 
 LibraryLinks.propTypes = {
+  selectElement: PropTypes.func,
   shortcuts: PropTypes.arrayOf(PropTypes.shape({
     elementIndex: PropTypes.number,
   })).isRequired,
@@ -46,6 +47,7 @@ LibraryLinks.propTypes = {
 
 LibraryLinks.defaultProps = {
   libraries: undefined,
+  selectElement: () => {},
 };
 
 export default LibraryLinks;

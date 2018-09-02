@@ -96,7 +96,7 @@
     "no-mixed-spaces-and-tabs": 0,
     "max-len": ["warn", 100, 2, {
       "ignoreUrls": true,
-      "ignoreComments": false,
+      "ignoreComments": true,
       "ignoreRegExpLiterals": true,
       "ignoreStrings": true,
       "ignoreTemplateLiterals": true

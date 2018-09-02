@@ -5,9 +5,9 @@ const Header = () => (
   <Fragment>
     <Hero>
       <BigTitle>
-        Hello. <br /> I'm Cameron Aziz.
+        Hello. <br /> I&apos;m Cameron Aziz.
       </BigTitle>
-      <Subtitle>I'm a web engineer specializing in full stack Javascript applications.</Subtitle>
+      <Subtitle>I&apos;m a web engineer specializing in full stack Javascript applications.</Subtitle>
     </Hero>
   </Fragment>
 );

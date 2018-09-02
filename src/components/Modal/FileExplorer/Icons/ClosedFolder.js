@@ -10,7 +10,7 @@ const calculateSize = size => {
   return `0 0 ${calculatedSize} ${calculatedSize}`;
 };
 
-const ClosedFolder = ({ size }) => (
+const ClosedFolder = ({ size, fill }) => (
   <svg
     version="1.1"
     id="Capa_1"
@@ -19,6 +19,7 @@ const ClosedFolder = ({ size }) => (
     y="0px"
     viewBox={calculateSize(size)}
     xmlSpace="preserve"
+    fill={fill}
   >
     <path
       d="M56.98,11.5H28.02V6.52c0-1.665-1.354-3.02-3.02-3.02H3.02C1.354,3.5,0,4.854,0,6.52V20.5v2v30.98
@@ -31,10 +32,12 @@ const ClosedFolder = ({ size }) => (
 
 ClosedFolder.propTypes = {
   size: PropTypes.number,
+  fill: PropTypes.string,
 };
 
 ClosedFolder.defaultProps = {
   size: undefined,
+  fill: undefined,
 };
 
 export default ClosedFolder;

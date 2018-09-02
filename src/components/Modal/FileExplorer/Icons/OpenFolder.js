@@ -10,7 +10,7 @@ const calculateSize = size => {
   return `0 0 ${calculatedSize} ${calculatedSize}`;
 };
 
-const OpenFolder = ({ size }) => (
+const OpenFolder = ({ size, fill }) => (
   <svg
     version="1.1"
     id="Capa_1"
@@ -18,6 +18,7 @@ const OpenFolder = ({ size }) => (
     x="0px"
     y="0px"
     viewBox={calculateSize(size)}
+    fill={fill}
     xmlSpace="preserve"
   >
     <path
@@ -33,10 +34,12 @@ const OpenFolder = ({ size }) => (
 
 OpenFolder.propTypes = {
   size: PropTypes.number,
+  fill: PropTypes.string,
 };
 
 OpenFolder.defaultProps = {
   size: undefined,
+  fill: undefined,
 };
 
 export default OpenFolder;

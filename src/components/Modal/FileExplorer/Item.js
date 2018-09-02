@@ -2,8 +2,9 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { Folder, File } from './Icons';
 
-import { childrenItems, getItemFill } from './util';
+import { childrenItems, findSelection } from './util';
 import FileElement from './FileElement';
+import Rect from './Rect';
 
 class Item extends Component {
   state = { hovered: false };
@@ -23,39 +24,21 @@ class Item extends Component {
   render() {
     const { hovered } = this.state;
     const {
-      element, depth, selectElement, currentElementIndex,
+      element, depth, selectElement, currentElementIndex, currentPath, folderIndex,
     } = this.props;
-    const { iconFill, highlightFill } = getItemFill(element, currentElementIndex);
+    const { childPath, isSelected, iconFill } = findSelection(currentPath, folderIndex);
     return (
       <Fragment>
         <g>
           <g transform={`translate(0,${20 * element.offset})`} onMouseEnter={this.onHover} onMouseLeave={this.onLeave}>
-            <g pointerEvents="all" onClick={() => selectElement(element.elementIndex)}>
-              {hovered && (
-                <rect
-                  transform="translate(0,-2)"
-                  x="0"
-                  y="0"
-                  width="calc(100% + 10)"
-                  height="20px"
-                  fill="rgba(0,0,255,0.15)"
-                />
-              )}
-              {currentElementIndex === element.elementIndex && (
-                <rect
-                  transform="translate(0,-2)"
-                  x="0"
-                  y="0"
-                  width="calc(100% + 10)"
-                  height="20px"
-                  fill={`rgba(${highlightFill})`}
-                />
-              )}
+            <g pointerEvents="all" onClick={() => selectElement(element.path)}>
+              {hovered && <Rect fill="0,0,255,0.15" />}
+              {isSelected && <Rect fill="0,0,0,0.3" />}
               <g transform={`translate(${depth * 20},0)`}>
                 {element.type === 'file' ? (
-                  <File fillColor={iconFill} size={0.8} />
+                  <File fill={iconFill} size={0.8} />
                 ) : (
-                  <Folder isOpen={element.isOpen} size={0.8} />
+                  <Folder fill={iconFill} isOpen={element.isOpen} size={0.8} />
                 )}
                 <text fill={iconFill} transform="translate(40,1)" alignmentBaseline="hanging">
                   {element.label}
@@ -65,6 +48,7 @@ class Item extends Component {
           </g>
           {childrenItems(element) && (
             <FileElement
+              selectedPath={childPath}
               tree={element.children}
               depth={depth + 1}
               selectElement={selectElement}
@@ -78,6 +62,8 @@ class Item extends Component {
 }
 
 Item.propTypes = {
+  folderIndex: PropTypes.number.isRequired,
+  currentPath: PropTypes.arrayOf(PropTypes.number).isRequired,
   depth: PropTypes.number.isRequired,
   element: PropTypes.shape({
     label: PropTypes.string,
