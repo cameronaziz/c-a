@@ -1,12 +1,20 @@
 const defaultExport = ['', 'export default [', '];'];
 
 const directoryLines = (directories) => {
-  const lines = [];
-  if (!directories) { return lines ;}
+  const importLines = [];
+  const exportLines = [];
+  if (!directories) { return importLines; }
   for (const directory of directories) {
-    lines.push(`import ${directory} from './${directory}/lucentDisplay';`);
+    importLines.push(`import ${directory} from './${directory}/lucentDisplay';`);
+    exportLines.push(`  {
+    label: '${directory}',
+    children: ${directory},
+  },`);
   }
-  return lines;
+  return {
+    importLines,
+    exportLines,
+  };
 };
 
 const template = (constant, fileImport, displayFileSrc, directories) => {
@@ -24,11 +32,12 @@ const template = (constant, fileImport, displayFileSrc, directories) => {
       }
     }
   }
-  const exportArr = newExport.split('\n');
+  let exportArr = newExport.split('\n');
   if (!displayFileSrc) {
-    const dirs = directoryLines(directories);
-    if (dirs.length > 0) {
-      dataArr = dataArr.concat(dirs);
+    const { importLines, exportLines } = directoryLines(directories);
+    if (importLines.length > 0) {
+      dataArr = dataArr.concat(importLines);
+      exportArr = exportArr.concat(exportLines);
     }
     dataArr = dataArr.concat(defaultExport);
   }

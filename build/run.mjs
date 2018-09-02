@@ -128,7 +128,7 @@ const readFileContents = (file) => new Promise((resolve, reject) => {
     const source = src.replace(dolla, '\\${').replace(backTick, '\\`');
 
     for (let i = 0; i < dataArr.length - 1; i += 1) {
-      if (dataArr[i].startsWixqth('import')) {
+      if (dataArr[i].startsWith('import')) {
         const importModule = dataArr[i].split("'");
         if (importModule[1].startsWith('.')) {
           const link = {
@@ -188,12 +188,11 @@ const writeFile = ({
 
 
 const build = async (files) => {
-  asyncForEach(files.files, async (file) => {
+  await asyncForEach(files.files, async (file) => {
     const found = excluded.includes(path.extname(file)) ||
     excluded.includes(file) || excluded.includes(path.basename(file));
     if (!found) {
-      readFileContents(file).then((data) => {
-        console.log(data);
+      await readFileContents(file).then((data) => {
         writeFile({ ...data }).then((datum) => {
           createLucentDisplay({ ...datum });
         });

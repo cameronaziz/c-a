@@ -5,7 +5,7 @@ import { BackButton, CloseButton } from './Buttons';
 import FileExplorer from './FileExplorer';
 import { FileTreeContainer, ModalContainer, ModalContent, LibraryLinksContainer, Elements, LibraryLinksOffset } from './styled';
 import CodeExplorer from './CodeExplorer';
-import { buildTree, findLink, findShortcuts, setOffset } from './util';
+import { buildTree, findLink, findShortcuts, setOffset, arraysIdentical } from './util';
 import WhyNotification from './WhyNotification';
 import LibraryLinks from './LibraryLinks';
 
@@ -62,7 +62,7 @@ class Modal extends Component {
   addToStack = ({ code }) => {
     const { stack } = this.state;
     const last = stack[stack.length - 1];
-    if (!last || last.elementIndex !== code.elementIndex) {
+    if (!last || !arraysIdentical(last.path,code.path)) {
       const linkLines = [];
       for (let i = 0; i < code.links.length; i += 1) {
         linkLines.push(code.links[i].line);
@@ -123,6 +123,7 @@ class Modal extends Component {
     const {
       stack, tree, data, shortcuts, selectedPath,
     } = this.state;
+    console.log(stack);
     const { toggleModal } = this.props;
     const current = stack[stack.length - 1] || {};
     return (

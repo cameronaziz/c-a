@@ -6,7 +6,7 @@ import 'typeface-cantata-one'; // eslint-disable-line import/extensions
 import 'typeface-open-sans'; // eslint-disable-line import/extensions
 
 import findRoute from '../routes';
-import dataInput from '../data/projectLibraries/anyGameTickets';
+import dataInput from '../../output';
 import SEO from '../components/SEO';
 import Modal from '../components/Modal';
 import Projects from '../components/Projects';
