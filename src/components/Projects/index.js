@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import ProjectCard from './ProjectCard';
 import { Content, Inner, Title, ProjectsWrapper } from '../styled';
-import projectList from '../data/projectList';
+import projectList from '../../data/projectList';
 
-import '../../styles/highlight.css';
+import '../../styles/css/highlight.css';
 
 const Projects = ({ toggleModal, setExample }) => (
   <Content speed={0.4} offset={1.3}>
@@ -21,8 +21,8 @@ const Projects = ({ toggleModal, setExample }) => (
 );
 
 Projects.propTypes = {
-  setExample: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  // setExample: PropTypes.func.isRequired,
+  // toggleModal: PropTypes.func.isRequired,
 };
 
 export default Projects;

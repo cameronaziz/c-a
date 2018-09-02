@@ -1,28 +1,30 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Folder from './Folder';
-import File from './File';
 
-const FileElement = ({ tree, depth, selectElement }) =>
-  tree.map((element, index) => (
-    <Fragment key={index}>
-      <g>
-        <g transform={`translate(${depth * 20},${20 * element.offset})`}>
-          <g pointerEvents="all" onClick={() => selectElement(element.elementIndex)}>
-            {element.type === 'file' ? <File size={0.8} /> : <Folder isOpen={element.isOpen} size={0.8} />}
-            <text transform="translate(40,0)" alignmentBaseline="hanging">
-              {element.label}
-            </text>
-          </g>
-        </g>
-        {element.children &&
-          element.isOpen && <FileElement tree={element.children} depth={depth + 1} selectElement={selectElement} />}
-      </g>
-    </Fragment>
-  ));
+import Item from './Item';
+
+const FileElement = ({
+  tree, depth, selectElement, currentElementIndex,
+}) =>
+  tree.map((element) => {
+    return (
+      <Item
+        key={element.elementIndex}
+        element={element}
+        depth={depth}
+        currentElementIndex={currentElementIndex}
+        selectElement={selectElement}
+      />
+    );
+  });
 
 FileElement.propTypes = {
+  currentElementIndex: PropTypes.number,
   selectElement: PropTypes.func.isRequired,
+};
+
+FileElement.defaultProps = {
+  currentElementIndex: undefined,
 };
 
 export default FileElement;

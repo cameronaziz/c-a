@@ -82,6 +82,11 @@ export const InnerWave = styled.div`
 
 export const AboutHero = styled.div`
   ${tw('flex flex-col lg:flex-row items-center mt-8')};
+  a {
+    color: #e07628;
+    text-decoration: none;
+    cursor: pointer;
+  }
 `;
 
 export const Avatar = styled.img`

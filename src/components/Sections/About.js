@@ -1,24 +1,33 @@
 import React, { Fragment } from 'react';
-import fileDownload from 'js-file-download';
+import PropTypes from 'prop-types';
+import { Document } from 'react-pdf';
 
-import { Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub, AboutLink } from './styled';
-import avatar from '../images/avatar.png';
-import resume from '../../static/Cameron Aziz - Resume.pdf';
+import { Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub, AboutLink } from '../styled';
+import avatar from '../../images/avatar.png';
+import resume from '../../../static/Cameron Aziz - Resume.pdf';
+import InteractiveElement from '../Common/InteractiveElement';
 
-const downloadPDF = () => {
-  fileDownload(resume, 'Cameron Aziz - Resume.pdf');
-};
+// const downloadPDF = () => {
+//   fileDownload(resume, 'Cameron Aziz - Resume.pdf');
+// };
 
-const About = () => (
+const About = ({ toggleModal }) => (
   <Fragment>
     <Inner>
       <Title>About</Title>
       <AboutHero>
         <Avatar src={avatar} alt="Cameron Aziz" />
-        <AboutSub>I like to code.</AboutSub>
+        <AboutSub>
+          I like to code.{' '}
+          <InteractiveElement style={{ outline: 'none' }} Element="a" onClick={toggleModal}>
+            See code for this site?
+          </InteractiveElement>
+        </AboutSub>
       </AboutHero>
       <AboutLink>
-        <a onClick={downloadPDF}>My resume</a>
+        {/* <InteractiveElement style={{ outline: 'none' }} Element="a" onClick={downloadPDF}>
+          My resume
+        </InteractiveElement> */}
       </AboutLink>
       <AboutDesc>
         My passion for open source technologies has allowed me to take products and applications from conception to
@@ -30,5 +39,9 @@ const About = () => (
     </Inner>
   </Fragment>
 );
+
+About.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
+};
 
 export default About;

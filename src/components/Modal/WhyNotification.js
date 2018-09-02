@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { WhyNotificationContainer } from './styled';
+
 class WhyNotification extends Component {
   state = { visible: false };
 
@@ -17,13 +19,12 @@ class WhyNotification extends Component {
       className = `${className} bg-teal-lightest border-teal border-t-4 shadow-md`;
     }
     return (
-      <div
+      <WhyNotificationContainer
         tabIndex={-1}
         onFocus={this.toggleVisible}
         onBlur={this.toggleVisible}
         onMouseOver={this.toggleVisible}
         onMouseOut={this.toggleVisible}
-        style={{ bottom: '40px' }}
         className={className}
         role="alert"
       >
@@ -42,7 +43,7 @@ class WhyNotification extends Component {
             </div>
           )}
         </div>
-      </div>
+      </WhyNotificationContainer>
     );
   }
 }

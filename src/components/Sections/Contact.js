@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import { Inner, Title, ContactText, Footer } from './styled';
+import { Inner, Title, ContactText, Footer } from '../styled';
 
 const Contact = () => (
   <Fragment>

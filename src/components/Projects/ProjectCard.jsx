@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Wrapper, Text, CardTitle, CardBackground, CardButton, ButtonContainer } from '../styled';
-import libraries from '../data/libraries';
+import libraries from '../../data/libraries';
 
 class ProjectCard extends Component {
   state = {
@@ -20,9 +20,6 @@ class ProjectCard extends Component {
       bgImg,
       buttonText,
     });
-    if (example) {
-      this.props.setExample(example);
-    }
   };
 
   leaveItem = () => {
@@ -60,9 +57,9 @@ class ProjectCard extends Component {
           <div style={{ height: '65px' }}>
             <Text>{libraryText}</Text>
           </div>
-          <ButtonContainer>
+          {/* <ButtonContainer>
             {libraryText && <CardButton onClick={toggleModal}>See {buttonText} Code</CardButton>}
-          </ButtonContainer>
+          </ButtonContainer> */}
         </div>
       </Wrapper>
     );
@@ -71,8 +68,8 @@ class ProjectCard extends Component {
 export default ProjectCard;
 
 ProjectCard.propTypes = {
-  setExample: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  // setExample: PropTypes.func.isRequired,
+  // toggleModal: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   bg: PropTypes.string.isRequired,

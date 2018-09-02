@@ -1,15 +1,30 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
+import { fromJS } from 'immutable';
 
-import CloseButton from './CloseButton';
-import FileTree from './FileExplorer/FileTree';
-import { FileTreeContainer, ModalContainer, ModalContent } from './styled';
-import dataInput from '../projectLibraries/anyGameTickets';
-import Code from './Code';
+import { BackButton, CloseButton } from './Buttons';
+import FileExplorer from './FileExplorer';
+import { FileTreeContainer, ModalContainer, ModalContent, LibraryLinksContainer, Elements, LibraryLinksOffset } from './styled';
+import dataInput from '../../data/projectLibraries/anyGameTickets';
+import CodeExplorer from './CodeExplorer';
+import { buildTree, findLink, findShortcuts } from './util';
+import { findElement, findStatus } from './FileExplorer/util';
+import WhyNotification from './WhyNotification';
+import LibraryLinks from './LibraryLinks';
+
+/**
+ * Modal
+ *
+ * @reactProps {function} toggleModal - Function to be called to toggle the modal.
+ *
+ */
 
 class Modal extends Component {
   state = {
+    shortcuts: [],
+    data: {},
     tree: [],
+    rawTree: [],
     stack: [],
   };
 
@@ -17,6 +32,9 @@ class Modal extends Component {
     if (!dataInput) {
       return;
     }
+    this.setState({
+      data: dataInput,
+    });
     this.renderChart(dataInput);
     if (this.props.modalData) {
       this.addToStack(this.props.modalData);
@@ -31,8 +49,10 @@ class Modal extends Component {
     document.removeEventListener('keydown', this.escFunction, false);
   }
 
-  escFunction = () => {
-    this.props.toggleModal();
+  escFunction = e => {
+    if (e.keyCode === 27) {
+      this.props.toggleModal();
+    }
   };
 
   clickContainer = event => {
@@ -42,63 +62,38 @@ class Modal extends Component {
     }
   };
 
-  globalIndex = -1;
-
-  addChildren = arr =>
-    arr.map(element => {
-      this.globalIndex += 1;
-      if (!element.items) {
-        return {
-          offset: this.globalIndex,
-          elementIndex: this.globalIndex,
-          type: 'file',
-          ...element,
-        };
-      }
-      return {
-        offset: this.globalIndex,
-        elementIndex: this.globalIndex,
-        label: element.label,
-        children: this.addChildren(element.items),
-        type: 'folder',
-        isOpen: false,
-        name: element.name,
-      };
-    });
-
   addToStack = ({ code }) => {
-    const linkLines = [];
-    for (let i = 0; i < code.links.length; i += 1) {
-      linkLines.push(code.links[i].line);
+    const { stack } = this.state;
+    const last = stack[stack.length - 1];
+    if (!last || last.elementIndex !== code.elementIndex) {
+      const linkLines = [];
+      for (let i = 0; i < code.links.length; i += 1) {
+        linkLines.push(code.links[i].line);
+      }
+      code.linkLines = linkLines;
+      this.setState(prevState => ({
+        stack: [...prevState.stack, code],
+      }));
     }
-    code.linkLines = linkLines;
-    this.setState(prevState => ({
-      stack: [...prevState.stack, code],
-    }));
-  };
-
-  findLink = (path, tree, index) => {
-    const found = tree.find(element => element.name === path[index]);
-    if (path.length === index + 1) {
-      return found;
-    }
-    return this.findLink(path, found.children, index + 1);
   };
 
   click = line => {
     const { stack, tree } = this.state;
     const currentCode = stack[stack.length - 1];
     const data = currentCode.links.find(link => link.line === line);
-    const newPage = this.findLink(data.location, tree, 0);
+    const newPage = findLink(data.location, tree, 0);
     if (newPage) {
       this.addToStack({ code: newPage });
     }
   };
 
   goBack = () => {
-    this.setState(prevState => ({
-      stack: prevState.stack.pop(),
-    }));
+    this.setState(prevState => {
+      prevState.stack.pop();
+      return {
+        ...prevState.stack,
+      };
+    });
   };
 
   recusiveOpen = tree => {
@@ -117,38 +112,90 @@ class Modal extends Component {
     return this.recusiveOpen(tree);
   };
 
+  selectElement = index => {
+    const { tree } = this.state;
+    const element = findElement(tree, index, []);
+    const status = findStatus(element.path, tree);
+    const elementPath = [];
+    for (let j = 0; j <= element.path.length - 1; j += 1) {
+      this.setState(prevState => {
+        const stateTree = j === 0 ? this.state.rawTree : prevState.tree;
+        elementPath.push(element.path[j]);
+        const immutable = fromJS(stateTree);
+        const newStatus = j === element.path.length - 1 ? !status : true;
+        let newTree = immutable.setIn([...elementPath, 'isOpen'], newStatus).toJS();
+        elementPath.push('children');
+        if (j === element.path.length - 1) {
+          elementPath.pop();
+          const data = fromJS(newTree)
+            .getIn(elementPath)
+            .toJS();
+          if (data.code) {
+            this.addToStack({ code: data });
+          }
+          newTree = this.offsetOpen(newTree);
+        }
+        return {
+          tree: newTree,
+        };
+      });
+    }
+  };
+
   renderChart = data => {
-    this.globalIndex = -1;
-    const tree = this.offsetOpen(this.addChildren(data, this.globalIndex));
+    const tree = this.offsetOpen(buildTree(data.tree, -1));
+    const shortcuts = findShortcuts(tree, data.shortcuts, 0);
     this.setState({
+      shortcuts,
       tree,
+      rawTree: tree,
     });
   };
 
   render() {
-    const { stack, tree } = this.state;
+    const {
+      stack, tree, data, shortcuts,
+    } = this.state;
     const { toggleModal } = this.props;
-    const currentCode = stack[stack.length - 1] || {};
+    const current = stack[stack.length - 1] || {};
+    console.log(tree);
     return (
       <Fragment>
-        {/* {stack.length > 1 && <BackButton goBack={this.goBack} />} */}
         <ModalContainer
           role="button"
           tabIndex="0"
-          style={{ outline: 'none' }}
           onKeyUp={this.clickContainer}
           onClick={this.clickContainer}
         >
           <ModalContent>
-            <FileTreeContainer>
-              {tree.length > 0 && (
-                <FileTree offsetOpen={this.offsetOpen} tree={tree} size="100" setCode={this.addToStack} />
+            <LibraryLinksOffset />
+            <LibraryLinksContainer>
+              <LibraryLinks
+                current={current}
+                libraries={data.libraries}
+                shortcuts={shortcuts}
+                selectElement={this.selectElement}
+              />
+            </LibraryLinksContainer>
+            <Elements>
+              <FileTreeContainer shorten={!!data.isLimited} >
+                {tree.length > 0 && (
+                <FileExplorer
+                  current={current}
+                  offsetOpen={this.offsetOpen}
+                  tree={tree}
+                  size="100"
+                  selectElement={this.selectElement}
+                />
               )}
-            </FileTreeContainer>
-            <Code code={currentCode} click={this.click} />
+              </FileTreeContainer>
+              {data.isLimited && <WhyNotification />}
+              <CodeExplorer current={current} click={this.click} />
+            </Elements>
+            {stack.length > 1 && <BackButton goBack={this.goBack} />}
+            <CloseButton toggleModal={toggleModal} />
           </ModalContent>
         </ModalContainer>
-        <CloseButton toggleModal={toggleModal} />
       </Fragment>
     );
   }

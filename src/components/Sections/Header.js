@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Hero, BigTitle, Subtitle } from './styled';
+import { Hero, BigTitle, Subtitle } from '../styled';
 
 const Header = () => (
   <Fragment>
