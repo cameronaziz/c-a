@@ -1,9 +1,11 @@
 const fs = require('fs');
+const fsExtra = require('fs-extra');
 const path = require('path');
 const format = require('./template');
 const lucentFile = require('./lucentFile');
 
 const directory = '../src/components';
+const deleteable = '../output/src';
 const output = '../output';
 
 const excluded = [
@@ -183,10 +185,27 @@ const build = async (files) => {
   return returnData;
 };
 
+const deleteFolderRecursive = (pathName) => {
+  let files = [];
+  if (fs.existsSync(pathName)) {
+    files = fs.readdirSync(pathName);
+    files.forEach(file => {
+      const curPath = `${pathName}/${file}`;
+      if (fs.lstatSync(curPath).isDirectory()) {
+        deleteFolderRecursive(curPath);
+      } else {
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(pathName);
+  }
+};
+
+
 const runnit = () => {
-  const needsDelete = fs.existsSync(directory);
+  const needsDelete = fs.existsSync(deleteable);
   if (needsDelete) {
-    fs.rmdirSync(directory);
+    deleteFolderRecursive(deleteable);
   }
   walk(directory, (erro, files) => {
     build(files);

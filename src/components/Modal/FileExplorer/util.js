@@ -24,7 +24,11 @@ export const findSelection = (currentPath, folderIndex) => {
       }
       break;
     default:
-      childPath = currentPath.slice(1);
+      if (folderIndex === currentPath[0]) {
+        childPath = currentPath.slice(1);
+      } else {
+        childPath = [];
+      }
   }
   return {
     childPath, isSelected, iconFill,
