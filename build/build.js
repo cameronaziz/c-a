@@ -4,7 +4,7 @@ const format = require('./template');
 const lucentFile = require('./lucentFile');
 
 const directory = '../src/components';
-const output = '../output';
+const output = '../src/build';
 
 const excluded = [
   '.pdf',

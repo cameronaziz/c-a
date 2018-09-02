@@ -1,12 +1,11 @@
 const fs = require('fs');
-const fsExtra = require('fs-extra');
 const path = require('path');
 const format = require('./template');
 const lucentFile = require('./lucentFile');
 
 const directory = '../src/components';
-const deleteable = '../output/src';
-const output = '../output';
+const deleteable = '../src/build/src';
+const output = '../src/build';
 
 const excluded = [
   '.pdf',
