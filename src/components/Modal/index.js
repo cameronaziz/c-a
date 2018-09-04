@@ -5,7 +5,7 @@ import { BackButton, CloseButton } from './Buttons';
 import FileExplorer from './FileExplorer';
 import { FileTreeContainer, ModalContainer, ModalContent, LibraryLinksContainer, Elements, LibraryLinksOffset } from './styled';
 import CodeExplorer from './CodeExplorer';
-import { buildTree, findLink, findShortcuts, setOffset, arraysIdentical } from './util';
+import { buildTree, findLink, findShortcuts, setOffset } from './util';
 import WhyNotification from './WhyNotification';
 import LibraryLinks from './LibraryLinks';
 
@@ -31,6 +31,7 @@ class Modal extends Component {
       const { modalData } = this.props;
       const tree = buildTree(modalData.tree, -1, []);
       const shortcuts = findShortcuts(tree, modalData.shortcuts, 0);
+      setOffset(tree, -1);
       this.setState({
         data: modalData,
         shortcuts,
@@ -63,7 +64,8 @@ class Modal extends Component {
   addToStack = ({ code }) => {
     const { stack } = this.state;
     const last = stack[stack.length - 1];
-    if (!last || !arraysIdentical(last.path, code.path)) {
+    const isRepeat = last && last.path.every((element, i) => element === code.path[i]);
+    if (!isRepeat) {
       const linkLines = [];
       for (let i = 0; i < code.links.length; i += 1) {
         linkLines.push(code.links[i].line);
@@ -77,13 +79,11 @@ class Modal extends Component {
   };
 
   clickInlineLink = line => {
-    const { stack, tree } = this.state;
+    const { stack } = this.state;
     const currentCode = stack[stack.length - 1];
     const data = currentCode.links.find(link => link.line === line);
-    const newPage = findLink(data.location, tree, 0);
-    if (newPage) {
-      this.selectElement(newPage.path);
-    }
+    const path = data.location.slice(2);
+    this.clickShortcut({ location: path });
   };
 
   goBack = () => {
@@ -112,20 +112,52 @@ class Modal extends Component {
         const children = buildTree(dataElement.children, -1, path);
         prevElement.children = children;
         prevElement.isOpen = !prevElement.isOpen;
-        setOffset(prevState.tree, -1);
       } else {
         this.addToStack({ code: prevElement });
       }
+      setOffset(prevState.tree, -1);
       return prevState;
     });
   };
 
+  findInFolder = (arr, filename) => arr.find((item) => item.label === filename)
+
+  buildByName = (folderPath, tree) => {
+    const element = this.findInFolder(tree, folderPath[0]);
+    if (folderPath.length > 1) {
+      const dataElement = this.findElement(element.path, this.props.modalData.tree);
+      const newPath = folderPath.slice(1);
+      element.isOpen = true;
+      element.children =
+        this.buildByName(newPath, buildTree(dataElement.children, -1, element.path));
+    }
+    return tree;
+  }
+
+  findByPath = (folderPath, tree) => {
+    const element = this.findInFolder(tree, folderPath[0]);
+    if (folderPath.length > 1) {
+      const newPath = folderPath.slice(1);
+      return this.findByPath(newPath, element.children);
+    }
+    return element.path;
+  }
+
+  clickShortcut = (shortcut) => {
+    const { tree } = this.state;
+    const { location } = shortcut;
+    const newTree = this.buildByName(location, tree, 0);
+    const selectedPath = this.findByPath(location, newTree);
+    this.setState({
+      tree: newTree,
+      selectedPath,
+    }, this.selectElement(selectedPath));
+  }
 
   render() {
     const {
-      stack, tree, data, shortcuts, selectedPath, displayDefault,
+      stack, tree, data, selectedPath, displayDefault,
     } = this.state;
-    console.log(stack);
     const { toggleModal } = this.props;
     const current = stack[stack.length - 1] || {};
     return (
@@ -141,9 +173,8 @@ class Modal extends Component {
             <LibraryLinksContainer>
               <LibraryLinks
                 current={current}
-                libraries={data.libraries}
-                shortcuts={shortcuts}
-                selectElement={this.selectElement}
+                data={data}
+                clickShortcut={this.clickShortcut}
               />
             </LibraryLinksContainer>
             <Elements>

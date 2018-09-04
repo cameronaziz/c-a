@@ -70,7 +70,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','propTypes'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'About.js',

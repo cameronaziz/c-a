@@ -71,7 +71,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','propTypes','reactSyntaxHighlighter','reactSyntaxHighlighter/styles/hljs'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'CodeDisplay.js',

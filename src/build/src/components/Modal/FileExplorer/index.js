@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import FileElement from './FileElement';
 
 const FileExplorer = ({ tree, selectElement, selectedPath }) => (
-  <div style={{ marginTop: '10px', marginBottom: '5%' }}>
-    <svg style={{ paddingBottom: '92%' }} width="100%">
+  <div style={{ marginTop: '10px', marginBottom: '5%', height: '100%' }}>
+    <svg height="auto" width="100%">
       <g transform="translate(0, 10)">
         <FileElement
           selectedPath={selectedPath}
@@ -43,7 +43,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','propTypes','svg'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'index.js',

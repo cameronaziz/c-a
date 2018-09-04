@@ -64,7 +64,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','propTypes','svg'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'D3.js',

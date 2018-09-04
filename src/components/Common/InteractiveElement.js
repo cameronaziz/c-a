@@ -3,22 +3,28 @@ import PropTypes from 'prop-types';
 
 const InteractiveElement = ({
   children, onClick, onKeyPress, role, Element, tabIndex, style, ...rest
-}) => (
-  <Element
-    role={role || 'button'}
-    tabIndex={tabIndex || -1}
-    onKeyPress={onKeyPress || onClick}
-    onClick={onClick}
-    style={{ outline: 'none', ...style }}
-    {...rest}
-  >
-    {children}
-  </Element>
-);
+}) => {
+  let click = onClick;
+  if (typeof onClick === 'object') {
+    click = () => { onClick.onClickFunction(onClick.parameters); };
+  }
+  return (
+    <Element
+      role={role || 'button'}
+      tabIndex={tabIndex || -1}
+      onKeyPress={onKeyPress || click}
+      onClick={click}
+      style={{ outline: 'none', ...style }}
+      {...rest}
+    >
+      {children}
+    </Element>
+  );
+};
 
 InteractiveElement.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ onClickFunction: PropTypes.func })]).isRequired,
   onKeyPress: PropTypes.func,
   role: PropTypes.string,
   Element: PropTypes.string.isRequired,
@@ -26,7 +32,6 @@ InteractiveElement.propTypes = {
 };
 
 InteractiveElement.defaultProps = {
-  onClick: () => {},
   onKeyPress: undefined,
   role: undefined,
   tabIndex: undefined,

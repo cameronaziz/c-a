@@ -44,7 +44,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','svg'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'BottomSVG.js',

@@ -184,7 +184,10 @@ const links = [
   }
 ];
 
+const libraries = ['reactEmotion','reactSpring'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'styled.js',

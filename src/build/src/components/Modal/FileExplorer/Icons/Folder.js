@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import ClosedFolder from './ClosedFolder';
 import OpenFolder from './OpenFolder';
 
-const Folder = ({ isOpen, fill }) => {
+const Folder = ({ isOpen, ...rest }) => {
   if (isOpen) {
-    return <OpenFolder fill={fill} />;
+    return <OpenFolder {...rest} />;
   }
-  return <ClosedFolder fill={fill} />;
+  return <ClosedFolder {...rest} />;
 };
 
 Folder.propTypes = {
@@ -48,7 +48,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','propTypes'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'Folder.js',

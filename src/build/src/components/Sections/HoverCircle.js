@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+const code = `import React, { Component } from 'react';
 import { Transition } from 'react-transition-group';
 
 import SVG from '../SVG/SVG';
@@ -8,7 +8,7 @@ import { Shake } from '../../styles/animations';
 const duration = 300;
 
 const defaultStyle = {
-  transition: `left ${duration}ms ease-in-out`,
+  transition: \`left \${duration}ms ease-in-out\`,
   position: 'absolute',
   left: '95%',
   top: '5%',
@@ -18,7 +18,7 @@ const defaultStyle = {
 
 const defaultRotate = {
   transformOrigin: 'center',
-  transition: `transform ${duration}ms ease-in-out`,
+  transition: \`transform \${duration}ms ease-in-out\`,
   transform: 'rotate(160deg)',
 };
 
@@ -85,3 +85,41 @@ class HoverCircle extends Component {
 
 export default HoverCircle;
 
+`;
+
+const links = [
+  {
+    line: 4,
+    location: [
+      'src',
+      'components',
+      'SVG.js'
+    ]
+  },
+  {
+    line: 5,
+    location: [
+      'src',
+      'components',
+      'tailwind.js'
+    ]
+  },
+  {
+    line: 6,
+    location: [
+      'src',
+      'components',
+      'animations.js'
+    ]
+  }
+];
+
+const libraries = ['react','reactTransitionGroup'];
+
+export default {
+  libraries,
+  code,
+  links,
+  name: 'HoverCircle.js',
+  label: 'HoverCircle.js',
+};

@@ -52,7 +52,10 @@ export const Elements = styled.div\`
 
 const links = [];
 
+const libraries = ['reactEmotion'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'styled.js',

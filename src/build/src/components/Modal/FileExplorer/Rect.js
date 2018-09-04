@@ -21,7 +21,10 @@ export default Rect;
 
 const links = [];
 
+const libraries = ['react','propTypes'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'Rect.js',

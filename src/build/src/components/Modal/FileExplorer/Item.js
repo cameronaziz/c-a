@@ -34,13 +34,13 @@ class Item extends Component {
             <g pointerEvents="all" onClick={() => selectElement(element.path)}>
               {hovered && <Rect fill="0,0,255,0.15" />}
               {isSelected && <Rect fill="0,0,0,0.3" />}
-              <g transform={\`translate(\${depth * 20},0)\`}>
+              <g transform={\`translate(\${(depth * 15) + 5},0)\`}>
                 {element.type === 'file' ? (
-                  <File fill={iconFill} size={0.8} />
+                  <File fill={iconFill} size={0.3} />
                 ) : (
-                  <Folder fill={iconFill} isOpen={element.isOpen} size={0.8} />
+                  <Folder fill={iconFill} isOpen={element.isOpen} size={0.3} />
                 )}
-                <text fill={iconFill} transform="translate(40,1)" alignmentBaseline="hanging">
+                <text fill={iconFill} transform="translate(25,1)" alignmentBaseline="hanging">
                   {element.label}
                 </text>
               </g>
@@ -123,7 +123,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','propTypes'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'Item.js',

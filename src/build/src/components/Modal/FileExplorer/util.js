@@ -38,7 +38,10 @@ export const findSelection = (currentPath, folderIndex) => {
 
 const links = [];
 
+const libraries = [];
+
 export default {
+  libraries,
   code,
   links,
   name: 'util.js',

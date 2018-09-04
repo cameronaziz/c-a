@@ -22,7 +22,10 @@ const code = `export const calculateSize = (size, defaultSize, attr) => {
 
 const links = [];
 
+const libraries = [];
+
 export default {
+  libraries,
   code,
   links,
   name: 'util.js',

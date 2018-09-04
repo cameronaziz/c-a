@@ -21,7 +21,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','reactHelmet'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'Facebook.js',

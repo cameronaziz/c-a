@@ -2,10 +2,12 @@ const code = `import React from 'react';
 import { CodeContainer } from '../styled';
 
 import CodeDisplay from './CodeDisplay';
+import DefaultHero from './DefaultHero';
 
-const CodeExplorer = ({ current, ...rest }) => (
+const CodeExplorer = ({ current, displayDefault, ...rest }) => (
   <CodeContainer visible={!!current.code}>
     {current.code && <CodeDisplay current={current} {...rest} />}
+    {displayDefault && <DefaultHero />}
   </CodeContainer>
 );
 
@@ -31,10 +33,23 @@ const links = [
       'CodeExplorer',
       'CodeDisplay.js'
     ]
+  },
+  {
+    line: 5,
+    location: [
+      'src',
+      'components',
+      'Modal',
+      'CodeExplorer',
+      'DefaultHero.js'
+    ]
   }
 ];
 
+const libraries = ['react'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'index.js',

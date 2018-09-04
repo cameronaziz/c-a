@@ -15,48 +15,15 @@ const excluded = [
   '.DS_Store',
 ];
 
+const libraries = [
+  'react',
+];
+
 async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
   }
 }
-
-const walk = (dir, done) => {
-  let results = {
-    files: [],
-    directories: [],
-  };
-  fs.readdir(dir, (err, list) => {
-    results.directories.push(dir);
-    if (err) return done(err);
-    let i = -1;
-    (function next() {
-      let file = list[i += 1];
-      if (!file) return done(null, results);
-      file = `${dir}/${file}`;
-      fs.stat(file, (errorStat, stat) => {
-        if (errorStat) {
-          console.log(errorStat);
-        }
-        if (stat && stat.isDirectory()) {
-          walk(file, (errorWalk, res) => {
-            if (errorWalk) {
-              console.log(errorWalk);
-            }
-            results = {
-              files: results.files.concat(res.files),
-              directories: results.directories.concat(res.directories),
-            };
-            next();
-          });
-        } else {
-          results.files.push(file);
-          next();
-        }
-      });
-    }());
-  });
-};
 
 const linkFile = (importModule, fileArr) => {
   if (importModule[0].startsWith('..')) {
@@ -90,9 +57,47 @@ const createLucentDisplay = ({
     const list = fs.readdirSync(dir);
     const directories = findDirs(dir, list, [], 0);
     const fileData = lucentFile.template(constant, importName, false, directories);
-    console.log(displayFile);
     fs.writeFileSync(displayFile, fileData);
   }
+};
+
+const camelCase = (input) => input.toLowerCase().replace(/-(.)/g, (match, group1) => group1.toUpperCase());
+
+
+const findFileLiraries = (dataArr) => {
+  const fileLiraries = [];
+  for (const line of dataArr) {
+    if (line.startsWith('import')) {
+      const element = line.split("'")[1];
+      if (!element.startsWith('.')) {
+        fileLiraries.push(camelCase(element));
+      }
+    }
+    if (line.includes('<svg')) {
+      fileLiraries.push(camelCase('svg'));
+    }
+  }
+  return fileLiraries;
+};
+
+const findLink = (importModule, i, fileArr) => {
+  if (importModule[1].startsWith('.')) {
+    const link = {
+      line: i + 1,
+    };
+    const importArr = importModule[1].split('/');
+    let fileName = importArr[importArr.length - 1];
+    const ext = fileName.split('.');
+    if (!ext[1]) {
+      fileName = `${fileName}.js`;
+    }
+    const arr = fileArr.slice(0, -1);
+    const location = linkFile(importArr, arr);
+    location.push(fileName);
+    link.location = location;
+    return link;
+  }
+  return undefined;
 };
 
 const readFileContents = (file) => new Promise((resolve, reject) => {
@@ -111,30 +116,26 @@ const readFileContents = (file) => new Promise((resolve, reject) => {
   const backTick = /`/g;
   const source = src.replace(dolla, '\\${').replace(backTick, '\\`');
 
+  const librariesInFile = findFileLiraries(dataArr);
+
   for (let i = 0; i < dataArr.length - 1; i += 1) {
+    const importModule = dataArr[i].split("'");
     if (dataArr[i].startsWith('import')) {
-      const importModule = dataArr[i].split("'");
-      if (importModule[1].startsWith('.')) {
-        const link = {
-          line: i + 1,
-        };
-        const importArr = importModule[1].split('/');
-        let fileName = importArr[importArr.length - 1];
-        const ext = fileName.split('.');
-        if (!ext[1]) {
-          fileName = `${fileName}.js`;
-        }
-        const arr = fileArr.slice(0, -1);
-        const location = linkFile(importArr, arr);
-        location.push(fileName);
-        link.location = location;
+      const link = findLink(importModule, i, fileArr);
+      if (link) {
         links.push(link);
+      }
+    }
+    if (dataArr[i].startsWith('export') && importModule[1] && importModule[1].startsWith('.')) {
+      const exportLink = findLink(importModule, i, fileArr);
+      if (exportLink) {
+        links.push(exportLink);
       }
     }
   }
   const filename = path.basename(file);
   const stringLinks = JSON.stringify(links, null, 2).replace(/"([^(")"]+)":/g, '$1:').replace(/"/g, "'");
-  const data = format.template(source, filename, stringLinks);
+  const data = format.template(source, filename, stringLinks, JSON.stringify(librariesInFile).replace(/"/g, "'"));
   const destination = `${dir}/${filename}`;
   const displayFile = `${dir}/lucentDisplay.js`;
   resolve({
@@ -148,9 +149,8 @@ const readFileContents = (file) => new Promise((resolve, reject) => {
 
 const writeFile = ({
   destination, data, filename, displayFile, dir,
-}) => new Promise((resolve, reject) => {
+}) => new Promise((resolve) => {
   fs.writeFileSync(destination, data);
-  // console.log(`The file ${destination} was saved!`);
   const fileImport = filename.split('.');
   let importName = filename;
   let constant = fileImport[0];
@@ -200,15 +200,32 @@ const deleteFolderRecursive = (pathName) => {
   }
 };
 
+const getContents = (dir, results) => {
+  const list = fs.readdirSync(dir);
+  for (const item of list) {
+    const filename = `${dir}/${item}`;
+    const stat = fs.statSync(filename);
+    if (stat && stat.isDirectory()) {
+      results.directories.push(filename);
+      getContents(filename, results);
+    } else {
+      results.files.push(filename);
+    }
+  }
+  return results;
+};
 
 const runnit = () => {
   const needsDelete = fs.existsSync(deleteable);
   if (needsDelete) {
     deleteFolderRecursive(deleteable);
   }
-  walk(directory, (erro, files) => {
-    build(files);
-  });
+  const results = {
+    files: [],
+    directories: [],
+  };
+  const elements = getContents(directory, results);
+  build(elements);
 };
 
 runnit();

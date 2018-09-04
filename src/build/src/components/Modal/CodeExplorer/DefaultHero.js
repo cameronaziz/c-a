@@ -1,4 +1,4 @@
-import React from 'react';
+const code = `import React from 'react';
 
 const DefaultHero = () => (
   <div className="bg-grey-lighter h-full py-12">
@@ -24,13 +24,26 @@ const DefaultHero = () => (
         Click the library icons above and go to highlights of the codebase.
       </div>
     </div>
-    {/* <div className="flex items-stretch h-8">
+    <div className="flex items-stretch h-8">
       <div className="self-start flex-grow text-center text-black p-8 mt-4">
         Click here to start a tour.
       </div>
-    </div> */}
+    </div>
   </div>
 
 );
 
 export default DefaultHero;
+`;
+
+const links = [];
+
+const libraries = ['react'];
+
+export default {
+  libraries,
+  code,
+  links,
+  name: 'DefaultHero.js',
+  label: 'DefaultHero.js',
+};

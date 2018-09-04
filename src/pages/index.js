@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactGA from 'react-ga';
-import { Parallax, config } from 'react-spring';
+import { Parallax } from 'react-spring';
 import 'typeface-cantata-one'; // eslint-disable-line import/extensions
 import 'typeface-open-sans'; // eslint-disable-line import/extensions
 
@@ -25,7 +25,7 @@ import '../../tailwind.custom.css';
 class Index extends Component {
   state = {
     title: '',
-    modalVisible: false,
+    modalVisible: true,
     modalData: undefined,
     transitionStyles,
     friction: 26,

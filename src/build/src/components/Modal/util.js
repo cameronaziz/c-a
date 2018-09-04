@@ -2,22 +2,25 @@ const code = `export const buildTree = (arr, index, path) => {
   if (typeof index !== 'undefined') {
     buildTree.index = index;
   }
+  if (arr) {
+    arr.sort((a, b) => a.label.toLowerCase() > b.label.toLowerCase());
+  }
   return arr.map((element, i) => {
     buildTree.index += 1;
     if (!element.children) {
       return {
         path: [...path, i],
-        elementIndex: buildTree.index,
-        offset: buildTree.index,
+        // elementIndex: buildTree.index,
+        // offset: buildTree.index,
         type: 'file',
         ...element,
       };
     }
     return {
       path: [...path, i],
-      elementIndex: buildTree.index,
+      // elementIndex: buildTree.index,
       label: element.label,
-      offset: buildTree.index,
+      // offset: buildTree.index,
       type: 'folder',
       name: element.name,
     };
@@ -98,20 +101,17 @@ export const createLineStyle = (lineNumber, current, hoveredLine) => {
   return style;
 };
 
-
-export const arraysIdentical = (a, b) => {
-  let i = a.length;
-  if (i != b.length) return false;
-  while (i--) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
-};
+export const camelCase = (lower) => lower
+  .replace(/([A-Z])/g, ' $1')
+  .replace(/^./, (str) => str.toUpperCase());
 `;
 
 const links = [];
 
+const libraries = [];
+
 export default {
+  libraries,
   code,
   links,
   name: 'util.js',

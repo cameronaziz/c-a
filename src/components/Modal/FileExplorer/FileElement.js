@@ -15,7 +15,7 @@ const FileElement = ({
       <Item
         currentPath={currentPath}
         folderIndex={index}
-        key={element.elementIndex}
+        key={index}
         element={element}
         depth={depth}
         currentElementIndex={currentElementIndex}

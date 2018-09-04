@@ -27,7 +27,10 @@ export default Favicon;
 
 const links = [];
 
+const libraries = ['react'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'Favicon.js',

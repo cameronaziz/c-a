@@ -14,7 +14,7 @@ const Wrapper = styled.svg\`
 \`;
 
 const SVG = ({
-  stroke, fill, width, icon, left, top, className,
+  stroke, fill, width, icon, left, top, className, children,
 }) => (
   <Wrapper
     viewBox={icons[icon].viewBox}
@@ -26,6 +26,7 @@ const SVG = ({
     className={className}
   >
     {icons[icon].shape}
+    {children}
   </Wrapper>
 );
 
@@ -71,7 +72,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','propTypes','reactEmotion'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'SVG.jsx',

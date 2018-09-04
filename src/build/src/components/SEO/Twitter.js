@@ -34,7 +34,10 @@ const links = [
   }
 ];
 
+const libraries = ['react','propTypes','reactHelmet'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'Twitter.js',

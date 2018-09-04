@@ -58,7 +58,10 @@ const links = [
   }
 ];
 
+const libraries = ['react'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'index.js',

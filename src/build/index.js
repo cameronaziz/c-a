@@ -1,16 +1,19 @@
 import tree from './src/components/lucentDisplay';
 
 export default {
-  // isLimited: true,
-  libraries: ['node', 'react', 'd3'],
+  libraries: ['react', 'reactEmotion', 'svg'],
   shortcuts: [
     {
-      library: 'node',
-      location: ['node', 'server.js'],
+      library: 'react',
+      location: ['Common', 'InteractiveElement.js'],
     },
     {
-      library: 'd3',
-      location: ['node', 'renderer.js'],
+      library: 'reactEmotion',
+      location: ['styled.js'],
+    },
+    {
+      library: 'svg',
+      location: ['LibraryIcons', 'D3.js'],
     },
   ],
   tree,

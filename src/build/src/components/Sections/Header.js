@@ -7,7 +7,7 @@ const Header = () => (
       <BigTitle>
         Hello. <br /> I&apos;m Cameron Aziz.
       </BigTitle>
-      <Subtitle>I&apos;m a web engineer specializing in full stack Javascript applications.</Subtitle>
+      <Subtitle>I&apos;m a web engineer specializing in full stack Javascript applications. Like this one.</Subtitle>
     </Hero>
   </Fragment>
 );
@@ -26,7 +26,10 @@ const links = [
   }
 ];
 
+const libraries = ['react'];
+
 export default {
+  libraries,
   code,
   links,
   name: 'Header.js',
