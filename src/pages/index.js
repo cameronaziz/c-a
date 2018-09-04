@@ -25,7 +25,7 @@ import '../../tailwind.custom.css';
 class Index extends Component {
   state = {
     title: '',
-    modalVisible: true,
+    modalVisible: false,
     modalData: undefined,
     transitionStyles,
     friction: 26,
