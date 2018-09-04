@@ -2,6 +2,9 @@ export const buildTree = (arr, index, path) => {
   if (typeof index !== 'undefined') {
     buildTree.index = index;
   }
+  if (arr) {
+    arr.sort((a, b) => a.label.toLowerCase() > b.label.toLowerCase());
+  }
   return arr.map((element, i) => {
     buildTree.index += 1;
     if (!element.children) {
@@ -107,3 +110,6 @@ export const arraysIdentical = (a, b) => {
   }
   return true;
 };
+
+export const camelCase = (lower) => lower.replace(/^\w/, c => c.toUpperCase());
+

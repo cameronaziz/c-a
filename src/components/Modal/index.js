@@ -23,6 +23,7 @@ class Modal extends Component {
     tree: [],
     stack: [],
     selectedPath: undefined,
+    displayDefault: true,
   };
 
   componentWillMount() {
@@ -62,13 +63,14 @@ class Modal extends Component {
   addToStack = ({ code }) => {
     const { stack } = this.state;
     const last = stack[stack.length - 1];
-    if (!last || !arraysIdentical(last.path,code.path)) {
+    if (!last || !arraysIdentical(last.path, code.path)) {
       const linkLines = [];
       for (let i = 0; i < code.links.length; i += 1) {
         linkLines.push(code.links[i].line);
       }
       code.linkLines = linkLines;
       this.setState(prevState => ({
+        displayDefault: false,
         stack: [...prevState.stack, code],
       }));
     }
@@ -121,7 +123,7 @@ class Modal extends Component {
 
   render() {
     const {
-      stack, tree, data, shortcuts, selectedPath,
+      stack, tree, data, shortcuts, selectedPath, displayDefault,
     } = this.state;
     console.log(stack);
     const { toggleModal } = this.props;
@@ -156,7 +158,7 @@ class Modal extends Component {
               )}
               </FileTreeContainer>
               {data.isLimited && <WhyNotification />}
-              <CodeExplorer current={current} clickInlineLink={this.clickInlineLink} />
+              <CodeExplorer current={current} displayDefault={displayDefault} clickInlineLink={this.clickInlineLink} />
             </Elements>
             {stack.length > 1 && <BackButton goBack={this.goBack} />}
             <CloseButton toggleModal={toggleModal} />
