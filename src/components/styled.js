@@ -82,6 +82,11 @@ export const InnerWave = styled.div`
 
 export const AboutHero = styled.div`
   ${tw('flex flex-col lg:flex-row items-center mt-8')};
+  a {
+    color: #e07628;
+    text-decoration: none;
+    cursor: pointer;
+  }
 `;
 
 export const Avatar = styled.img`
@@ -127,7 +132,7 @@ export const Footer = styled.footer`
 
 export const Wrapper = styled.a`
   width: 100%;
-  ${tw('shadow-lg relative no-underline rounded-lg px-8 py-16 text-white')};
+  ${tw('shadow-lg relative no-underline rounded-lg px-16 py-16 mb-4 text-white')};
   background: ${props => props.bg};
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover {
@@ -136,7 +141,7 @@ export const Wrapper = styled.a`
 `;
 
 export const Text = styled.div`
-  ${tw('opacity-75 font-sans')};
+  ${tw('font-sans')};
 `;
 
 export const CardTitle = styled.div`
@@ -146,4 +151,24 @@ export const CardTitle = styled.div`
 
 export const CardTech = styled.div`
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+`;
+
+export const CardBackground = styled.div`
+  ${tw('rounded')};
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  opacity: 0.5;
+  z-index: -1;
+`;
+
+export const CardButton = styled.button`
+  ${tw('bg-white border border-blue-dark hover:bg-blue-dark text-blue-dark hover:text-white font-bold py-2 px-4 rounded-full')};
+  outline: none;
+`;
+
+export const ButtonContainer = styled.span`
+  ${tw('relative visible sm:invisible md:visible lg:visible xl:visible')};
 `;

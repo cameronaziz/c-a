@@ -13,7 +13,9 @@ const Wrapper = styled.svg`
   top: ${props => props.top};
 `;
 
-const SVG = ({ stroke, fill, width, icon, left, top, className }) => (
+const SVG = ({
+  stroke, fill, width, icon, left, top, className, children,
+}) => (
   <Wrapper
     viewBox={icons[icon].viewBox}
     stroke={stroke}
@@ -24,6 +26,7 @@ const SVG = ({ stroke, fill, width, icon, left, top, className }) => (
     className={className}
   >
     {icons[icon].shape}
+    {children}
   </Wrapper>
 );
 
