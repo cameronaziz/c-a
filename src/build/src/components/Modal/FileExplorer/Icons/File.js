@@ -35,12 +35,12 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'util.js'
-    ]
-  }
+      'util.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes'];
+const libraries = ['react', 'propTypes'];
 
 export default {
   libraries,

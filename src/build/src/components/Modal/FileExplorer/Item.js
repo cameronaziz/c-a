@@ -88,8 +88,8 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'Icons.js'
-    ]
+      'Icons.js',
+    ],
   },
   {
     line: 5,
@@ -98,8 +98,8 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'util.js'
-    ]
+      'util.js',
+    ],
   },
   {
     line: 6,
@@ -108,8 +108,8 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'FileElement.js'
-    ]
+      'FileElement.js',
+    ],
   },
   {
     line: 7,
@@ -118,12 +118,12 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'Rect.js'
-    ]
-  }
+      'Rect.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes'];
+const libraries = ['react', 'propTypes'];
 
 export default {
   libraries,

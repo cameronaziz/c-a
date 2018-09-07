@@ -66,12 +66,12 @@ const links = [
       'src',
       'components',
       'Modal',
-      'util.js'
-    ]
-  }
+      'util.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes','reactSyntaxHighlighter','reactSyntaxHighlighter/styles/hljs'];
+const libraries = ['react', 'propTypes', 'reactSyntaxHighlighter', 'reactSyntaxHighlighter/styles/hljs'];
 
 export default {
   libraries,

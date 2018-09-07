@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import { Folder, File } from './Icons';
 
+import { Folder, File } from './Icons';
 import { childrenItems, findSelection } from './util';
 import FileElement from './FileElement';
 import Rect from './Rect';

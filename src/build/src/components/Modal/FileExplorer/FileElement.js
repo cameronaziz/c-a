@@ -49,12 +49,12 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'Item.js'
-    ]
-  }
+      'Item.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes'];
+const libraries = ['react', 'propTypes'];
 
 export default {
   libraries,

@@ -66,16 +66,16 @@ const links = [
     location: [
       'src',
       'components',
-      'LibraryIcons.js'
-    ]
+      'LibraryIcons.js',
+    ],
   },
   {
     line: 6,
     location: [
       'src',
       'components',
-      'InteractiveElement.js'
-    ]
+      'InteractiveElement.js',
+    ],
   },
   {
     line: 7,
@@ -83,12 +83,12 @@ const links = [
       'src',
       'components',
       'Modal',
-      'util.js'
-    ]
-  }
+      'util.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes','reactTooltip'];
+const libraries = ['react', 'propTypes', 'reactTooltip'];
 
 export default {
   libraries,

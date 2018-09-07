@@ -11,4 +11,4 @@ export default {
     animationIterationCount: 'infinite',
     left: '95%',
   },
-}
+};

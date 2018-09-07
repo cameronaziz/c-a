@@ -21,9 +21,9 @@ const links = [
     location: [
       'src',
       'components',
-      'styled.js'
-    ]
-  }
+      'styled.js',
+    ],
+  },
 ];
 
 const libraries = ['react'];

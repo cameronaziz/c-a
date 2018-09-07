@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { calculateIconSize } from '../util';
 
 const File = ({ size, fill }) => (
   <g transform={`scale(${size})`} fill={fill}>

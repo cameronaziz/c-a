@@ -38,12 +38,12 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'FileElement.js'
-    ]
-  }
+      'FileElement.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes','svg'];
+const libraries = ['react', 'propTypes', 'svg'];
 
 export default {
   libraries,

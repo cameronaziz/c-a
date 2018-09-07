@@ -55,7 +55,9 @@ class Modal extends Component {
   };
 
   clickContainer = event => {
+    console.log(event);
     event.preventDefault();
+    console.log(event.target, event.currentTarget);
     if (event.target === event.currentTarget) {
       this.props.toggleModal();
     }
@@ -162,12 +164,7 @@ class Modal extends Component {
     const current = stack[stack.length - 1] || {};
     return (
       <Fragment>
-        <ModalContainer
-          role="button"
-          tabIndex="0"
-          onKeyUp={this.clickContainer}
-          onClick={this.clickContainer}
-        >
+        <ModalContainer>
           <ModalContent>
             <LibraryLinksOffset />
             <LibraryLinksContainer>

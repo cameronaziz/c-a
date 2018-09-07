@@ -16,12 +16,12 @@ const links = [
     location: [
       'src',
       'components',
-      'website.js'
-    ]
-  }
+      'website.js',
+    ],
+  },
 ];
 
-const libraries = ['react','reactHelmet'];
+const libraries = ['react', 'reactHelmet'];
 
 export default {
   libraries,

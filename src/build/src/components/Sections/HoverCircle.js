@@ -93,28 +93,28 @@ const links = [
     location: [
       'src',
       'components',
-      'SVG.js'
-    ]
+      'SVG.js',
+    ],
   },
   {
     line: 5,
     location: [
       'src',
       'components',
-      'tailwind.js'
-    ]
+      'tailwind.js',
+    ],
   },
   {
     line: 6,
     location: [
       'src',
       'components',
-      'animations.js'
-    ]
-  }
+      'animations.js',
+    ],
+  },
 ];
 
-const libraries = ['react','reactTransitionGroup'];
+const libraries = ['react', 'reactTransitionGroup'];
 
 export default {
   libraries,

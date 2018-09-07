@@ -225,8 +225,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'Buttons.js'
-    ]
+      'Buttons.js',
+    ],
   },
   {
     line: 5,
@@ -234,8 +234,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'FileExplorer.js'
-    ]
+      'FileExplorer.js',
+    ],
   },
   {
     line: 6,
@@ -243,8 +243,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'styled.js'
-    ]
+      'styled.js',
+    ],
   },
   {
     line: 7,
@@ -252,8 +252,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'CodeExplorer.js'
-    ]
+      'CodeExplorer.js',
+    ],
   },
   {
     line: 8,
@@ -261,8 +261,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'util.js'
-    ]
+      'util.js',
+    ],
   },
   {
     line: 9,
@@ -270,8 +270,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'WhyNotification.js'
-    ]
+      'WhyNotification.js',
+    ],
   },
   {
     line: 10,
@@ -279,12 +279,12 @@ const links = [
       'src',
       'components',
       'Modal',
-      'LibraryLinks.js'
-    ]
-  }
+      'LibraryLinks.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes'];
+const libraries = ['react', 'propTypes'];
 
 export default {
   libraries,

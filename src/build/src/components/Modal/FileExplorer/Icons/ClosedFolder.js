@@ -36,7 +36,7 @@ export default ClosedFolder;
 
 const links = [];
 
-const libraries = ['react','propTypes'];
+const libraries = ['react', 'propTypes'];
 
 export default {
   libraries,

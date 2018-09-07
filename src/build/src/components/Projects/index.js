@@ -29,33 +29,33 @@ const links = [
       'src',
       'components',
       'Projects',
-      'ProjectCard.js'
-    ]
+      'ProjectCard.js',
+    ],
   },
   {
     line: 4,
     location: [
       'src',
       'components',
-      'styled.js'
-    ]
+      'styled.js',
+    ],
   },
   {
     line: 5,
     location: [
       'src',
       'components',
-      'projectList.js'
-    ]
+      'projectList.js',
+    ],
   },
   {
     line: 7,
     location: [
       'src',
       'components',
-      'highlight.css'
-    ]
-  }
+      'highlight.css',
+    ],
+  },
 ];
 
 const libraries = ['react'];

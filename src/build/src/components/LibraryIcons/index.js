@@ -13,8 +13,8 @@ const links = [
       'src',
       'components',
       'LibraryIcons',
-      'Node.js'
-    ]
+      'Node.js',
+    ],
   },
   {
     line: 2,
@@ -22,8 +22,8 @@ const links = [
       'src',
       'components',
       'LibraryIcons',
-      'React.js'
-    ]
+      'React.js',
+    ],
   },
   {
     line: 3,
@@ -31,8 +31,8 @@ const links = [
       'src',
       'components',
       'LibraryIcons',
-      'D3.js'
-    ]
+      'D3.js',
+    ],
   },
   {
     line: 4,
@@ -40,8 +40,8 @@ const links = [
       'src',
       'components',
       'LibraryIcons',
-      'Emotion.js'
-    ]
+      'Emotion.js',
+    ],
   },
   {
     line: 5,
@@ -49,8 +49,8 @@ const links = [
       'src',
       'components',
       'LibraryIcons',
-      'SVG.js'
-    ]
+      'SVG.js',
+    ],
   },
   {
     line: 6,
@@ -58,9 +58,9 @@ const links = [
       'src',
       'components',
       'LibraryIcons',
-      'Tour.js'
-    ]
-  }
+      'Tour.js',
+    ],
+  },
 ];
 
 const libraries = [];

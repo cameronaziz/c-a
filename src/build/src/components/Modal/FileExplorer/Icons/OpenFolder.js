@@ -38,7 +38,7 @@ export default OpenFolder;
 
 const links = [];
 
-const libraries = ['react','propTypes'];
+const libraries = ['react', 'propTypes'];
 
 export default {
   libraries,

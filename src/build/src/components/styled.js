@@ -179,12 +179,12 @@ const links = [
     line: 3,
     location: [
       'src',
-      'fullTriangle.svg'
-    ]
-  }
+      'fullTriangle.svg',
+    ],
+  },
 ];
 
-const libraries = ['reactEmotion','reactSpring'];
+const libraries = ['reactEmotion', 'reactSpring'];
 
 export default {
   libraries,

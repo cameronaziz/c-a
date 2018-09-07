@@ -49,28 +49,28 @@ const links = [
     location: [
       'src',
       'components',
-      'styled.js'
-    ]
+      'styled.js',
+    ],
   },
   {
     line: 6,
     location: [
       'src',
       'components',
-      'avatar.png'
-    ]
+      'avatar.png',
+    ],
   },
   {
     line: 8,
     location: [
       'src',
       'components',
-      'InteractiveElement.js'
-    ]
-  }
+      'InteractiveElement.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes'];
+const libraries = ['react', 'propTypes'];
 
 export default {
   libraries,

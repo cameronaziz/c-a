@@ -12,8 +12,8 @@ const links = [
       'src',
       'components',
       'SVG',
-      'HeaderSVG.js'
-    ]
+      'HeaderSVG.js',
+    ],
   },
   {
     line: 2,
@@ -21,8 +21,8 @@ const links = [
       'src',
       'components',
       'SVG',
-      'MidSVG.js'
-    ]
+      'MidSVG.js',
+    ],
   },
   {
     line: 3,
@@ -30,8 +30,8 @@ const links = [
       'src',
       'components',
       'SVG',
-      'BottomSVG.js'
-    ]
+      'BottomSVG.js',
+    ],
   },
   {
     line: 4,
@@ -39,8 +39,8 @@ const links = [
       'src',
       'components',
       'SVG',
-      'FooterSVG.js'
-    ]
+      'FooterSVG.js',
+    ],
   },
   {
     line: 5,
@@ -48,9 +48,9 @@ const links = [
       'src',
       'components',
       'SVG',
-      'LowerSVG.js'
-    ]
-  }
+      'LowerSVG.js',
+    ],
+  },
 ];
 
 const libraries = [];

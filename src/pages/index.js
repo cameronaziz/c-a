@@ -15,6 +15,7 @@ import { DividerMiddle, Divider, Content } from '../components/styled';
 import { HeaderSVG, MidSVG, LowerSVG, BottomSVG, FooterSVG } from '../components/SVG';
 import '../styles/global';
 import '../../tailwind.custom.css';
+import InteractiveElement from '../components/Common/InteractiveElement';
 
 /**
  * The homepage of the application.
@@ -87,8 +88,8 @@ class Index extends Component {
 
   render() {
     const {
- title, modalVisible, modalData, friction 
-} = this.state;
+      title, modalVisible, modalData, friction,
+    } = this.state;
     return (
       <Fragment>
         <SEO title={title} />
@@ -124,7 +125,10 @@ class Index extends Component {
             <FooterSVG />
           </Divider>
         </Parallax>
-        {modalVisible && <Modal toggleModal={this.toggleModal} modalData={modalData} />}
+        {modalVisible &&
+        <div style={{ position: 'absolute', height: '100%', width: '100%' }}>
+          <Modal toggleModal={this.toggleModal} modalData={modalData} />
+        </div>}
       </Fragment>
     );
   }

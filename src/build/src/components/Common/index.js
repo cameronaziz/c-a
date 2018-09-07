@@ -8,9 +8,9 @@ const links = [
       'src',
       'components',
       'Common',
-      'InteractiveElement.js'
-    ]
-  }
+      'InteractiveElement.js',
+    ],
+  },
 ];
 
 const libraries = [];

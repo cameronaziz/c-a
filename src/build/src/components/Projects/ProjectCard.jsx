@@ -83,20 +83,20 @@ const links = [
     location: [
       'src',
       'components',
-      'styled.js'
-    ]
+      'styled.js',
+    ],
   },
   {
     line: 5,
     location: [
       'src',
       'components',
-      'libraries.js'
-    ]
-  }
+      'libraries.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes'];
+const libraries = ['react', 'propTypes'];
 
 export default {
   libraries,

@@ -11,8 +11,8 @@ const links = [
       'src',
       'components',
       'Sections',
-      'About.js'
-    ]
+      'About.js',
+    ],
   },
   {
     line: 2,
@@ -20,8 +20,8 @@ const links = [
       'src',
       'components',
       'Sections',
-      'Contact.js'
-    ]
+      'Contact.js',
+    ],
   },
   {
     line: 3,
@@ -29,8 +29,8 @@ const links = [
       'src',
       'components',
       'Sections',
-      'Header.js'
-    ]
+      'Header.js',
+    ],
   },
   {
     line: 4,
@@ -38,9 +38,9 @@ const links = [
       'src',
       'components',
       'Sections',
-      'HoverCircle.js'
-    ]
-  }
+      'HoverCircle.js',
+    ],
+  },
 ];
 
 const libraries = [];

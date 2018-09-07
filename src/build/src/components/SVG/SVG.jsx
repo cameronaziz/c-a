@@ -58,8 +58,8 @@ const links = [
     location: [
       'src',
       'components',
-      'tailwind.js'
-    ]
+      'tailwind.js',
+    ],
   },
   {
     line: 5,
@@ -67,12 +67,12 @@ const links = [
       'src',
       'components',
       'SVG',
-      'icons.js'
-    ]
-  }
+      'icons.js',
+    ],
+  },
 ];
 
-const libraries = ['react','propTypes','reactEmotion'];
+const libraries = ['react', 'propTypes', 'reactEmotion'];
 
 export default {
   libraries,
