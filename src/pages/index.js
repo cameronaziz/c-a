@@ -15,7 +15,6 @@ import { DividerMiddle, Divider, Content } from '../components/styled';
 import { HeaderSVG, MidSVG, LowerSVG, BottomSVG, FooterSVG } from '../components/SVG';
 import '../styles/global';
 import '../../tailwind.custom.css';
-import InteractiveElement from '../components/Common/InteractiveElement';
 
 /**
  * The homepage of the application.
@@ -28,8 +27,9 @@ class Index extends Component {
     title: '',
     modalVisible: false,
     modalData: undefined,
-    transitionStyles,
     friction: 26,
+    projectsOffset: 0,
+    projectsScroll: 0,
   };
 
   componentWillMount() {
@@ -57,6 +57,18 @@ class Index extends Component {
     }
   }
 
+  setProjectsOffset = (projectsOffset) => {
+    this.setState({
+      projectsOffset,
+    });
+  }
+
+  setProjectsScroll = (projectsScroll) => {
+    this.setState({
+      projectsScroll,
+    });
+  }
+
   toggleModal = () => {
     this.stopHoverCircleShaking();
     const { modalVisible } = this.state;
@@ -75,20 +87,9 @@ class Index extends Component {
     this.stopHoverCircleShaking();
   }
 
-  stopHoverCircleShaking = () => {
-    this.setState(prevState => {
-      prevState.friction = 100;
-      prevState.transitionStyles.exited.animationIterationCount = '0';
-      return prevState;
-    });
-    this.setState({
-      friction: 26,
-    });
-  }
-
   render() {
     const {
-      title, modalVisible, modalData, friction,
+      title, modalVisible, modalData, friction, projectsOffset, projectsScroll,
     } = this.state;
     return (
       <Fragment>
@@ -98,17 +99,35 @@ class Index extends Component {
             <HeaderSVG />
           </Divider>
           <Content speed={0.4} offset={0}>
-            <HoverCircle viewCode={this.viewCode} transitionStyles={this.state.transitionStyles} stopShaking={this.stopHoverCircleShaking} />
             <Header />
           </Content>
+          <Divider
+            speed={0.1}
+            offset={1.3}
+          >
+            <HoverCircle
+              projectsScroll={projectsScroll}
+              offset={projectsOffset}
+              setOffset={this.setProjectsOffset}
+              setScrollPosition={this.setProjectsScroll}
+            />
+          </Divider>
           <DividerMiddle bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)" speed={-0.2} offset={1.1} />
-          {/* <Content speed={0.4} offset={0.8}> */}
-          <Projects />
-          {/* </Content> */}
+          <div ref={this.myRef}>
+            <Projects isUpcoming={projectsScroll < 200} />
+          </div>
           <Divider speed={0.1} offset={1}>
             <MidSVG />
           </Divider>
           <Divider bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} />
+          <Divider speed={0.1} offset={1.3}>
+            <HoverCircle
+              isButton
+              projectsScroll={projectsScroll}
+              offset={projectsOffset}
+              viewCode={this.viewCode}
+            />
+          </Divider>
           <Divider speed={0.1} offset={2}>
             <LowerSVG />
           </Divider>

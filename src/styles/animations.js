@@ -339,10 +339,12 @@ const shakeKeyframe = keyframes`2%{
 }
 0%,100%{
   transform:translate(0, 0) rotate(0)
-}`;
+}
+animation: 15s; 
+`;
 
 export const Shake = styled.div`
-  animation: ${shakeKeyframe} 15s; 
+${tw('stroke-current absolute')};
 `;
 
 export const UpDown = styled.div`
