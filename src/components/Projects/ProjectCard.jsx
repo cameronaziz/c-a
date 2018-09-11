@@ -2,9 +2,22 @@ import React, { Component, createRef } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import ReactTooltip, { show, hide } from 'react-tooltip';
+import { Transition } from 'react-transition-group';
 
 import { Wrapper, Text, CardTitle, CardBackground } from '../styled';
 import libraries from '../../data/libraries';
+
+const duration = 600;
+
+const defaultStyle = (isEven) => ({
+  // transition: `translateX ${duration}ms ease-in-out, rotate ${duration}ms ease-in-out`,
+  transform: `translateX(${isEven ? '-' : ''}400px) rotate(100deg)`,
+});
+
+const updatedStyles = {
+  entering: { transform: 'translateX(0px) rotate(0deg)' },
+  entered: { transform: 'translateX(0px) rotate(0deg)' },
+};
 
 class ProjectCard extends Component {
   state = {
@@ -49,7 +62,7 @@ class ProjectCard extends Component {
   render() {
     const { libraryText, bgImg } = this.state;
     const {
-      description, title, bg, tech, isFirst, isUpcoming, anyHovered,
+      description, title, bg, tech, isFirst, isUpcoming, anyHovered, even,
     } = this.props;
     if (isUpcoming && !anyHovered) {
       setTimeout(() => {
@@ -59,13 +72,16 @@ class ProjectCard extends Component {
         }, 4000);
       }, 6000);
     }
+    const style = defaultStyle(even);
     return (
-      <Wrapper bg={bg}>
-        <CardBackground bg={bgImg} />
-        <Text>{description}</Text>
-        <CardTitle>{title}</CardTitle>
-        <div style={{ position: 'relative' }} onMouseLeave={this.leaveItem}>
-          {tech &&
+      <Transition in={isUpcoming} timeout={duration}>
+        {(state) => (
+          <Wrapper bg={bg} style={{ ...style, ...updatedStyles[state] }}>
+            <CardBackground bg={bgImg} />
+            <Text>{description}</Text>
+            <CardTitle>{title}</CardTitle>
+            <div style={{ position: 'relative' }} onMouseLeave={this.leaveItem}>
+              {tech &&
             tech.map((item, index) => {
               const library = libraries.find(e => e.name === item.library);
               return (
@@ -87,12 +103,14 @@ class ProjectCard extends Component {
                 </span>
               );
             })}
-          <div style={{ height: '65px' }}>
-            <Text>{libraryText}</Text>
-          </div>
-        </div>
-        {isFirst && <ReactTooltip place="bottom" />}
-      </Wrapper>
+              <div style={{ height: '65px' }}>
+                <Text>{libraryText}</Text>
+              </div>
+            </div>
+            {isFirst && <ReactTooltip place="bottom" />}
+          </Wrapper>
+        )}
+      </Transition>
     );
   }
 }

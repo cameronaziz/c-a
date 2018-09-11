@@ -94,7 +94,7 @@ class Index extends Component {
     return (
       <Fragment>
         <SEO title={title} />
-        <Parallax config={{ friction }} ref={this.parallax} pages={4}>
+        <Parallax config={{ friction }} ref={this.parallax} pages={4} scrolling={false}>
           <Divider speed={1} offset={0}>
             <HeaderSVG />
           </Divider>
@@ -114,7 +114,7 @@ class Index extends Component {
           </Divider>
           <DividerMiddle bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)" speed={-0.2} offset={1.1} />
           <div ref={this.myRef}>
-            <Projects isUpcoming={projectsScroll < 200} />
+            <Projects isUpcoming={projectsScroll < 600} />
           </div>
           <Divider speed={0.1} offset={1}>
             <MidSVG />

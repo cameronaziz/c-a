@@ -134,8 +134,8 @@ export const Wrapper = styled.a`
   width: 100%;
   ${tw('shadow-lg relative no-underline rounded-lg px-16 py-16 mb-4 text-white')};
   background: ${props => props.bg};
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  &:hover {
+  transition: transform 3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &:hover 
     transform: translateY(-5px);
   }
 `;

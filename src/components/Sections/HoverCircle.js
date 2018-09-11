@@ -38,6 +38,7 @@ class HoverCircle extends Component {
 
   componentDidMount() {
     window.addEventListener('wheel', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll2);
     const { isButton, setOffset } = this.props;
     if (!isButton) {
       setOffset(this.getOffset());
@@ -55,6 +56,10 @@ class HoverCircle extends Component {
   }
 
   hoverCircleRef = createRef();
+
+  handleScroll2 = () => {
+    console.log('fuck')
+  }
 
   handleScroll = () => {
     const { isButton, setScrollPosition } = this.props;

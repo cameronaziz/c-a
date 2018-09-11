@@ -23,6 +23,7 @@ class Projects extends Component {
           <ProjectsWrapper>
             {projectList.map((project, index) => (
               <ProjectCard
+                even={index % 2 === 0}
                 anyHovered={this.state.anyHovered}
                 isUpcoming={this.props.isUpcoming}
                 isFirst={index === 0}
