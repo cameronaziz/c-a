@@ -17,7 +17,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: ['gatsby-remark-copy-linked-files'],
       },
@@ -29,6 +29,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/images/`,
         name: 'images',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/files/`,
+        name: 'files',
       },
     },
     'gatsby-transformer-sharp',

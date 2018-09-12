@@ -3,3 +3,4 @@ export { default as MidSVG } from './MidSVG';
 export { default as BottomSVG } from './BottomSVG';
 export { default as FooterSVG } from './FooterSVG';
 export { default as LowerSVG } from './LowerSVG';
+export { default as SVG } from './SVG';

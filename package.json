@@ -1,9 +1,18 @@
 {
-  "name": "gatsby-starter-portfolio-cara",
-  "description": "Gatsby Starter Portfolio Cara",
+  "name": "cameron-aziz-portfolio",
+  "description": "Cameron Aziz Portfolio",
   "version": "1.0.0",
-  "author": "LekoArts <hello@lekoarts.de>",
-  "license": "MIT",
+  "author": "Cameron Aziz",
+  "license": "UNLICENSED",
+  "scripts": {
+    "develop": "gatsby develop -o",
+    "build": "gatsby build",
+    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "lintsrc": "eslint src/. --ext .js,.jsx --ignore-path .gitignore --fix",
+    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
+    "predevelop": "postcss tailwind.css -o tailwind.custom.css",
+    "prebuild": "postcss tailwind.css -o tailwind.custom.css"
+  },
   "dependencies": {
     "babel-plugin-tailwind": "^0.1.10",
     "emotion": "^9.1.3",
@@ -19,9 +28,10 @@
     "gatsby-plugin-react-helmet": "^3.0.0-beta.3",
     "gatsby-plugin-sharp": "^2.0.0-rc.3",
     "gatsby-remark-copy-linked-files": "^1.5.37",
-    "gatsby-source-filesystem": "^2.0.0-alpha.15",
+    "gatsby-source-filesystem": "^2.0.0-alpha.f98688ee",
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^2.0.1-13",
+    "lodash": "^4.17.10",
     "postcss": "^6.0.22",
     "postcss-cli": "^5.0.0",
     "prop-types": "^15.6.1",
@@ -39,20 +49,6 @@
     "tailwindcss": "^0.6.1",
     "typeface-cantata-one": "^0.0.54",
     "typeface-open-sans": "^0.0.54"
-  },
-  "keywords": [
-    "gatsby",
-    "starter",
-    "portfolio"
-  ],
-  "scripts": {
-    "develop": "gatsby develop -o",
-    "build": "gatsby build",
-    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lintsrc": "eslint src/. --ext .js,.jsx --ignore-path .gitignore --fix",
-    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
-    "predevelop": "postcss tailwind.css -o tailwind.custom.css",
-    "prebuild": "postcss tailwind.css -o tailwind.custom.css"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",

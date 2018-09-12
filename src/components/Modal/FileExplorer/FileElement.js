@@ -13,9 +13,9 @@ const FileElement = ({
   return (
     tree.map((element, index) => (
       <Item
+        key={JSON.stringify(element.path)}
         currentPath={currentPath}
         folderIndex={index}
-        key={index}
         element={element}
         depth={depth}
         currentElementIndex={currentElementIndex}

@@ -3,3 +3,4 @@ export { default as Contact } from './Contact';
 export { default as Header } from './Header';
 export { default as HoverCircle } from './HoverCircle';
 export { default as transitionStyles } from './transitionStyles';
+export { default as Projects } from './Projects';

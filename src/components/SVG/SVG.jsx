@@ -31,6 +31,10 @@ const SVG = ({
 );
 
 SVG.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
   stroke: PropTypes.string,
   fill: PropTypes.string,
   width: PropTypes.number,
@@ -41,6 +45,7 @@ SVG.propTypes = {
 };
 
 SVG.defaultProps = {
+  children: undefined,
   stroke: 'transparent',
   width: 8,
   fill: 'none',

@@ -9,8 +9,7 @@ import findRoute from '../routes';
 import dataInput from '../build';
 import SEO from '../components/SEO';
 import Modal from '../components/Modal';
-import Projects from '../components/Projects';
-import { Header, About, Contact, HoverCircle, transitionStyles } from '../components/Sections';
+import { Header, About, Contact, HoverCircle, Projects } from '../components/Sections';
 import { DividerMiddle, Divider, Content } from '../components/styled';
 import { HeaderSVG, MidSVG, LowerSVG, BottomSVG, FooterSVG } from '../components/SVG';
 import '../styles/global';
@@ -29,7 +28,9 @@ class Index extends Component {
     modalData: undefined,
     friction: 26,
     projectsOffset: 0,
-    projectsScroll: 0,
+    projectsScroll: 999,
+    projectsViewed: false,
+    libraryIconHovered: false,
   };
 
   componentWillMount() {
@@ -70,12 +71,17 @@ class Index extends Component {
   }
 
   toggleModal = () => {
-    this.stopHoverCircleShaking();
     const { modalVisible } = this.state;
     this.setState({
       modalVisible: !modalVisible,
     });
   };
+
+  viewProjects = () => {
+    this.setState({
+      projectsViewed: true,
+    });
+  }
 
   parallax = React.createRef();
 
@@ -84,52 +90,68 @@ class Index extends Component {
   viewCode = () => {
     this.scroll(1.15);
     this.toggleModal();
-    this.stopHoverCircleShaking();
+    this.hoverLibraryIcon();
+  }
+
+  hoverLibraryIcon = () => {
+    this.setState({
+      libraryIconHovered: true,
+    });
   }
 
   render() {
     const {
-      title, modalVisible, modalData, friction, projectsOffset, projectsScroll,
+      title,
+      modalVisible,
+      modalData,
+      friction,
+      projectsOffset,
+      projectsScroll,
+      projectsViewed,
+      libraryIconHovered,
     } = this.state;
     return (
       <Fragment>
         <SEO title={title} />
-        <Parallax config={{ friction }} ref={this.parallax} pages={4} scrolling={false}>
+        <Parallax config={{ friction }} ref={this.parallax} pages={4}>
+          <Divider bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} />
           <Divider speed={1} offset={0}>
             <HeaderSVG />
           </Divider>
           <Content speed={0.4} offset={0}>
             <Header />
           </Content>
-          <Divider
-            speed={0.1}
-            offset={1.3}
-          >
+          <Divider speed={0.1} offset={2}>
+            <LowerSVG />
+          </Divider>
+          <Divider speed={0.1} offset={1.7}>
             <HoverCircle
               projectsScroll={projectsScroll}
               offset={projectsOffset}
               setOffset={this.setProjectsOffset}
               setScrollPosition={this.setProjectsScroll}
+              viewProjects={this.viewProjects}
             />
           </Divider>
           <DividerMiddle bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)" speed={-0.2} offset={1.1} />
           <div ref={this.myRef}>
-            <Projects isUpcoming={projectsScroll < 600} />
+            <Projects
+              projectsScroll={projectsScroll}
+              projectsViewed={projectsViewed}
+              hoverLibraryIcon={this.hoverLibraryIcon}
+              libraryIconHovered={libraryIconHovered}
+            />
           </div>
           <Divider speed={0.1} offset={1}>
             <MidSVG />
           </Divider>
-          <Divider bg="#23262b" clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)" speed={0.2} offset={2} />
-          <Divider speed={0.1} offset={1.3}>
+          <Divider speed={0.1} offset={1.7}>
             <HoverCircle
               isButton
               projectsScroll={projectsScroll}
               offset={projectsOffset}
               viewCode={this.viewCode}
             />
-          </Divider>
-          <Divider speed={0.1} offset={2}>
-            <LowerSVG />
           </Divider>
           <Content speed={0.4} offset={2.4}>
             <About toggleModal={this.toggleModal} />
@@ -154,7 +176,6 @@ class Index extends Component {
 }
 
 Index.propTypes = {
-  /** The window location. */
   location: PropTypes.shape({
     hash: PropTypes.string,
   }).isRequired,

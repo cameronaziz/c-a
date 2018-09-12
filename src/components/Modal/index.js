@@ -5,7 +5,7 @@ import { BackButton, CloseButton } from './Buttons';
 import FileExplorer from './FileExplorer';
 import { FileTreeContainer, ModalContainer, ModalContent, LibraryLinksContainer, Elements, LibraryLinksOffset } from './styled';
 import CodeExplorer from './CodeExplorer';
-import { buildTree, findLink, findShortcuts, setOffset } from './util';
+import { buildTree, setOffset } from './util';
 import WhyNotification from './WhyNotification';
 import LibraryLinks from './LibraryLinks';
 
@@ -18,7 +18,6 @@ import LibraryLinks from './LibraryLinks';
 
 class Modal extends Component {
   state = {
-    shortcuts: [],
     data: {},
     tree: [],
     stack: [],
@@ -30,11 +29,10 @@ class Modal extends Component {
     if (this.props.modalData) {
       const { modalData } = this.props;
       const tree = buildTree(modalData.tree, -1, []);
-      const shortcuts = findShortcuts(tree, modalData.shortcuts, 0);
+      // const shortcuts = findShortcuts(tree, modalData.shortcuts, 0);
       setOffset(tree, -1);
       this.setState({
         data: modalData,
-        shortcuts,
         tree,
       });
     }
@@ -55,9 +53,7 @@ class Modal extends Component {
   };
 
   clickContainer = event => {
-    console.log(event);
     event.preventDefault();
-    console.log(event.target, event.currentTarget);
     if (event.target === event.currentTarget) {
       this.props.toggleModal();
     }
@@ -186,7 +182,11 @@ class Modal extends Component {
               )}
               </FileTreeContainer>
               {data.isLimited && <WhyNotification />}
-              <CodeExplorer current={current} displayDefault={displayDefault} clickInlineLink={this.clickInlineLink} />
+              <CodeExplorer
+                current={current}
+                displayDefault={displayDefault}
+                clickInlineLink={this.clickInlineLink}
+              />
             </Elements>
             {stack.length > 1 && <BackButton goBack={this.goBack} />}
             <CloseButton toggleModal={toggleModal} />

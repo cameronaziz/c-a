@@ -7,7 +7,7 @@ import InteractiveElement from '../Common/InteractiveElement';
 import { camelCase } from './util';
 
 const LibraryLinks = ({
-  current, data, clickShortcut, startTour,
+  current, data, clickShortcut,
 }) => (
   <Fragment>
     {data.libraries &&
