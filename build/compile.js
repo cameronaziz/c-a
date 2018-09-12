@@ -15,12 +15,9 @@ const excluded = [
   '.DS_Store',
 ];
 
-const libraries = [
-  'react',
-];
-
 async function asyncForEach(array, callback) {
-  for (let index = 0; index < array.length; index++) {
+  for (let index = 0; index < array.length; index += 1) {
+    // eslint-disable-next-line no-await-in-loop
     await callback(array[index], index, array);
   }
 }
@@ -35,7 +32,7 @@ const linkFile = (importModule, fileArr) => {
 };
 
 const findDirs = (dir, list, directories, i) => {
-  if (list.length == i) { return directories; }
+  if (list.length === i) { return directories; }
   const file = `${dir}/${list[i]}`;
   const stat = fs.statSync(file);
   if (stat && stat.isDirectory()) {
@@ -100,7 +97,7 @@ const findLink = (importModule, i, fileArr) => {
   return undefined;
 };
 
-const readFileContents = (file) => new Promise((resolve, reject) => {
+const readFileContents = (file) => new Promise((resolve) => {
   const src = fs.readFileSync(file, 'utf-8');
   const fileArr = file.split('/').slice(1);
   let dir = output;
