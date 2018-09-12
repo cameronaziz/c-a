@@ -1,11 +1,8 @@
 import React, { Fragment } from 'react';
-// import PropTypes from 'prop-types';
-// import { Document } from 'react-pdf';
 
 import { Inner, Title, AboutDesc, AboutHero, Avatar, AboutSub, AboutLink } from '../styled';
 import avatar from '../../images/avatar.png';
 import resume from '../../files/resume.pdf';
-// import InteractiveElement from '../Common/InteractiveElement';
 
 const About = () => (
   <Fragment>
@@ -19,9 +16,6 @@ const About = () => (
       </AboutHero>
       <AboutLink>
         <a href={resume} download="Cameron Aziz - Resume.pdf">My Resume</a>
-        {/* <InteractiveElement style={{ outline: 'none' }} Element="a" onClick={downloadPDF}>
-          My resume
-        </InteractiveElement> */}
       </AboutLink>
       <AboutDesc>
         My passion for open source technologies has allowed me to take products and applications
