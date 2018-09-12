@@ -58,12 +58,12 @@ const links = [
       'src',
       'components',
       'Modal',
-      'styled.js',
-    ],
-  },
+      'styled.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'svg'];
+const libraries = ['react','svg'];
 
 export default {
   libraries,

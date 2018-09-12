@@ -1,7 +1,7 @@
 const code = `import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import { Folder, File } from './Icons';
 
+import { Folder, File } from './Icons';
 import { childrenItems, findSelection } from './util';
 import FileElement from './FileElement';
 import Rect from './Rect';
@@ -82,14 +82,14 @@ export default Item;
 
 const links = [
   {
-    line: 3,
+    line: 4,
     location: [
       'src',
       'components',
       'Modal',
       'FileExplorer',
-      'Icons.js',
-    ],
+      'Icons.js'
+    ]
   },
   {
     line: 5,
@@ -98,8 +98,8 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'util.js',
-    ],
+      'util.js'
+    ]
   },
   {
     line: 6,
@@ -108,8 +108,8 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'FileElement.js',
-    ],
+      'FileElement.js'
+    ]
   },
   {
     line: 7,
@@ -118,12 +118,12 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'Rect.js',
-    ],
-  },
+      'Rect.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'propTypes'];
+const libraries = ['react','propTypes'];
 
 export default {
   libraries,

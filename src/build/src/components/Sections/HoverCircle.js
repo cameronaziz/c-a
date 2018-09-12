@@ -1,81 +1,110 @@
-const code = `import React, { Component } from 'react';
+const code = `import React, { Component, createRef } from 'react';
+import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
+import _ from 'lodash';
 
-import SVG from '../SVG/SVG';
 import { colors } from '../../../tailwind';
-import { Shake } from '../../styles/animations';
-
-const duration = 300;
-
-const defaultStyle = {
-  transition: \`left \${duration}ms ease-in-out\`,
-  position: 'absolute',
-  left: '95%',
-  top: '5%',
-  animationIterationCount: 'infinite',
-};
-
-
-const defaultRotate = {
-  transformOrigin: 'center',
-  transition: \`transform \${duration}ms ease-in-out\`,
-  transform: 'rotate(160deg)',
-};
-
-const rotateStyles = {
-  entering: { transform: 'rotate(160deg)' },
-  entered: { transform: 'rotate(30deg)' },
-};
+import { duration, defaultRotate, rotateStyles } from './util';
 
 class HoverCircle extends Component {
   state = {
-    isHovered: false,
+    triggered: false,
   }
 
-  toggleHover = () => {
-    const { isHovered } = this.state;
-    this.setState({
-      isHovered: !isHovered,
-    });
+  componentDidMount() {
+    window.addEventListener('wheel', _.throttle(this.handleScroll, 500));
+    const { isButton, setScrollPosition } = this.props;
+    if (!isButton) {
+      setScrollPosition(this.getOffset());
+    }
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('wheel', this.handleScroll);
+  }
+
+  getOffset = () => {
+    const node = this.hoverCircleRef.current;
+    const boundingClient = node.getBoundingClientRect();
+    return boundingClient.y;
+  }
+
+  hoverCircleRef = createRef();
+
+  handleScroll = () => {
+    const { triggered } = this.state;
+    const { isButton, setScrollPosition, projectsScroll } = this.props;
+    if (!isButton) {
+      const yOffset = this.getOffset();
+      setScrollPosition(yOffset);
+      if (yOffset < 100) {
+        this.props.viewProjects();
+      }
+    }
+    if (!triggered && projectsScroll < 100) {
+      this.setState({
+        triggered: true,
+      });
+    }
+    if (triggered && projectsScroll > 100) {
+      this.setState({
+        triggered: false,
+      });
+    }
+  };
 
   render() {
-    const { transitionStyles } = this.props;
-    const { isHovered } = this.state;
+    const { isButton } = this.props;
+    const { triggered } = this.state;
     return (
       <div
+        ref={this.hoverCircleRef}
         role="button"
         tabIndex={-1}
         onClick={this.props.viewCode}
         onKeyPress={this.props.viewCode}
-        onMouseEnter={this.toggleHover}
-        onMouseLeave={this.toggleHover}
       >
-        <Transition in={isHovered} timeout={duration} onEntered={this.props.stopShaking}>
+        <Transition in={triggered} timeout={duration}>
           {(state) => (
-            <Shake style={{
-              ...defaultStyle,
-              ...transitionStyles[state],
-            }}
+            <div
+              style={{
+                ...defaultRotate,
+                ...rotateStyles[state],
+              }}
             >
-              <SVG icon="circle" width={64} fill={colors.green} left="95%" top="5%">
+              <svg width={350} viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <defs>
                   <path
-                    id="hoverCircle"
-                    d="M15,30A15,15,0,1,1,30,15,15,15,0,0,1,15,30ZM15,6.23A8.77,8.77,0,1,0,23.77,15,8.77,8.77,0,0,0,15,6.23Z"
+                    id="hover-circle"
+                    d="M 360 200 C 360 111.63444002707307 288.3655599729269 40.00000000000001 200 40 C 111.63444002707307 40.000000000000014 39.999999999999986 111.63444002707308 40 200 C 40.000000000000014 288.3655599729269 111.63444002707308 360 200 360 C 288.3655599729269 360 360 288.3655599729269 360 200 Z"
                     style={{
-                      ...defaultRotate,
-                      ...rotateStyles[state],
+                      stroke: 'rgb(216, 216, 216)',
+                      strokeWidth: '55px',
+                      fill: isButton ? colors.transparent : colors.black,
                     }}
                   />
                 </defs>
-                <text fontSize="3" fill="#000" strokeWidth="0">
-                  <textPath baselineShift="-3.5px" xlinkHref="#hoverCircle">
-                    Want to see the code for this site?
+                <path
+                  d="M 360 200 A 160 160 0 0 1 200 360 A 160 160 0 0 1 40 200 A 160 160 0 0 1 200 40 A 160 160 0 0 1 360 200 Z"
+                  style={{
+                    stroke: isButton ? colors.transparent : colors.green,
+                    strokeWidth: '80px',
+                    fill: 'none',
+                  }}
+                />
+                <text
+                  style={{
+                    whiteSpace: 'pre',
+                    fill: isButton ? colors.transparent : colors.black,
+                    fontSize: '24px',
+                  }}
+                >
+                  <textPath dominantBaseline="middle" startOffset="500" xlinkHref="#hover-circle">
+                    Click to see the code for this site!
                   </textPath>
                 </text>
-              </SVG>
-            </Shake>
+              </svg>
+            </div>
           )}
         </Transition>
       </div>
@@ -83,38 +112,45 @@ class HoverCircle extends Component {
   }
 }
 
-export default HoverCircle;
+HoverCircle.propTypes = {
+  viewProjects: PropTypes.func,
+  viewCode: PropTypes.func,
+  setScrollPosition: PropTypes.func,
+  isButton: PropTypes.bool,
+  projectsScroll: PropTypes.number.isRequired,
+};
 
+HoverCircle.defaultProps = {
+  viewProjects: undefined,
+  isButton: undefined,
+  setScrollPosition: undefined,
+  viewCode: undefined,
+};
+
+export default HoverCircle;
 `;
 
 const links = [
-  {
-    line: 4,
-    location: [
-      'src',
-      'components',
-      'SVG.js',
-    ],
-  },
-  {
-    line: 5,
-    location: [
-      'src',
-      'components',
-      'tailwind.js',
-    ],
-  },
   {
     line: 6,
     location: [
       'src',
       'components',
-      'animations.js',
-    ],
+      'tailwind.js'
+    ]
   },
+  {
+    line: 7,
+    location: [
+      'src',
+      'components',
+      'Sections',
+      'util.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'reactTransitionGroup'];
+const libraries = ['react','propTypes','reactTransitionGroup','lodash','svg'];
 
 export default {
   libraries,

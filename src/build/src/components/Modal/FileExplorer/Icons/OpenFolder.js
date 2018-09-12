@@ -1,15 +1,6 @@
 const code = `import React from 'react';
 import PropTypes from 'prop-types';
 
-const calculateSize = size => {
-  let calculatedSize = 500;
-  if (!size) {
-    return \`0 0 \${calculatedSize} \${calculatedSize}\`;
-  }
-  calculatedSize *= 1 / size;
-  return \`0 0 \${calculatedSize} \${calculatedSize}\`;
-};
-
 const OpenFolder = ({ size, fill }) => (
   <g transform={\`scale(\${size})\`} fill={fill}>
     <path
@@ -38,7 +29,7 @@ export default OpenFolder;
 
 const links = [];
 
-const libraries = ['react', 'propTypes'];
+const libraries = ['react','propTypes'];
 
 export default {
   libraries,

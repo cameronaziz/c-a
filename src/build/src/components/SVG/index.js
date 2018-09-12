@@ -3,6 +3,7 @@ export { default as MidSVG } from './MidSVG';
 export { default as BottomSVG } from './BottomSVG';
 export { default as FooterSVG } from './FooterSVG';
 export { default as LowerSVG } from './LowerSVG';
+export { default as SVG } from './SVG';
 `;
 
 const links = [
@@ -12,8 +13,8 @@ const links = [
       'src',
       'components',
       'SVG',
-      'HeaderSVG.js',
-    ],
+      'HeaderSVG.js'
+    ]
   },
   {
     line: 2,
@@ -21,8 +22,8 @@ const links = [
       'src',
       'components',
       'SVG',
-      'MidSVG.js',
-    ],
+      'MidSVG.js'
+    ]
   },
   {
     line: 3,
@@ -30,8 +31,8 @@ const links = [
       'src',
       'components',
       'SVG',
-      'BottomSVG.js',
-    ],
+      'BottomSVG.js'
+    ]
   },
   {
     line: 4,
@@ -39,8 +40,8 @@ const links = [
       'src',
       'components',
       'SVG',
-      'FooterSVG.js',
-    ],
+      'FooterSVG.js'
+    ]
   },
   {
     line: 5,
@@ -48,9 +49,18 @@ const links = [
       'src',
       'components',
       'SVG',
-      'LowerSVG.js',
-    ],
+      'LowerSVG.js'
+    ]
   },
+  {
+    line: 6,
+    location: [
+      'src',
+      'components',
+      'SVG',
+      'SVG.js'
+    ]
+  }
 ];
 
 const libraries = [];

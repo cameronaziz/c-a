@@ -24,7 +24,10 @@ const InteractiveElement = ({
 
 InteractiveElement.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-  onClick: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ onClickFunction: PropTypes.func })]).isRequired,
+  onClick: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ onClickFunction: PropTypes.func }),
+  ]).isRequired,
   onKeyPress: PropTypes.func,
   role: PropTypes.string,
   Element: PropTypes.string.isRequired,
@@ -42,7 +45,7 @@ export default InteractiveElement;
 
 const links = [];
 
-const libraries = ['react', 'propTypes'];
+const libraries = ['react','propTypes'];
 
 export default {
   libraries,

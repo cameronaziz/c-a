@@ -1,7 +1,6 @@
 const code = `import React from 'react';
 import PropTypes from 'prop-types';
 
-import { calculateIconSize } from '../util';
 
 const File = ({ size, fill }) => (
   <g transform={\`scale(\${size})\`} fill={fill}>
@@ -27,20 +26,9 @@ File.defaultProps = {
 export default File;
 `;
 
-const links = [
-  {
-    line: 4,
-    location: [
-      'src',
-      'components',
-      'Modal',
-      'FileExplorer',
-      'util.js',
-    ],
-  },
-];
+const links = [];
 
-const libraries = ['react', 'propTypes'];
+const libraries = ['react','propTypes'];
 
 export default {
   libraries,

@@ -32,8 +32,8 @@ const links = [
       'Modal',
       'FileExplorer',
       'Icons',
-      'ClosedFolder.js',
-    ],
+      'ClosedFolder.js'
+    ]
   },
   {
     line: 4,
@@ -43,12 +43,12 @@ const links = [
       'Modal',
       'FileExplorer',
       'Icons',
-      'OpenFolder.js',
-    ],
-  },
+      'OpenFolder.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'propTypes'];
+const libraries = ['react','propTypes'];
 
 export default {
   libraries,

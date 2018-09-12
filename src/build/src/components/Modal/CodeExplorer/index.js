@@ -21,8 +21,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'styled.js',
-    ],
+      'styled.js'
+    ]
   },
   {
     line: 4,
@@ -31,8 +31,8 @@ const links = [
       'components',
       'Modal',
       'CodeExplorer',
-      'CodeDisplay.js',
-    ],
+      'CodeDisplay.js'
+    ]
   },
   {
     line: 5,
@@ -41,9 +41,9 @@ const links = [
       'components',
       'Modal',
       'CodeExplorer',
-      'DefaultHero.js',
-    ],
-  },
+      'DefaultHero.js'
+    ]
+  }
 ];
 
 const libraries = ['react'];

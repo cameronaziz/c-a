@@ -64,8 +64,8 @@ const links = [
     location: [
       'src',
       'components',
-      'website.js',
-    ],
+      'website.js'
+    ]
   },
   {
     line: 6,
@@ -73,8 +73,8 @@ const links = [
       'src',
       'components',
       'SEO',
-      'Favicon.js',
-    ],
+      'Favicon.js'
+    ]
   },
   {
     line: 7,
@@ -82,8 +82,8 @@ const links = [
       'src',
       'components',
       'SEO',
-      'OpenGraph.js',
-    ],
+      'OpenGraph.js'
+    ]
   },
   {
     line: 8,
@@ -91,8 +91,8 @@ const links = [
       'src',
       'components',
       'SEO',
-      'Twitter.js',
-    ],
+      'Twitter.js'
+    ]
   },
   {
     line: 9,
@@ -100,12 +100,12 @@ const links = [
       'src',
       'components',
       'SEO',
-      'Facebook.js',
-    ],
-  },
+      'Facebook.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'propTypes', 'reactHelmet'];
+const libraries = ['react','propTypes','reactHelmet'];
 
 export default {
   libraries,

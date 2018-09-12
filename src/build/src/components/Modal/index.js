@@ -5,7 +5,7 @@ import { BackButton, CloseButton } from './Buttons';
 import FileExplorer from './FileExplorer';
 import { FileTreeContainer, ModalContainer, ModalContent, LibraryLinksContainer, Elements, LibraryLinksOffset } from './styled';
 import CodeExplorer from './CodeExplorer';
-import { buildTree, findLink, findShortcuts, setOffset } from './util';
+import { buildTree, setOffset } from './util';
 import WhyNotification from './WhyNotification';
 import LibraryLinks from './LibraryLinks';
 
@@ -18,7 +18,6 @@ import LibraryLinks from './LibraryLinks';
 
 class Modal extends Component {
   state = {
-    shortcuts: [],
     data: {},
     tree: [],
     stack: [],
@@ -30,11 +29,10 @@ class Modal extends Component {
     if (this.props.modalData) {
       const { modalData } = this.props;
       const tree = buildTree(modalData.tree, -1, []);
-      const shortcuts = findShortcuts(tree, modalData.shortcuts, 0);
+      // const shortcuts = findShortcuts(tree, modalData.shortcuts, 0);
       setOffset(tree, -1);
       this.setState({
         data: modalData,
-        shortcuts,
         tree,
       });
     }
@@ -79,13 +77,11 @@ class Modal extends Component {
   };
 
   clickInlineLink = line => {
-    const { stack, tree } = this.state;
+    const { stack } = this.state;
     const currentCode = stack[stack.length - 1];
     const data = currentCode.links.find(link => link.line === line);
-    const newPage = findLink(data.location, tree, 0);
-    if (newPage) {
-      this.selectElement(newPage.path);
-    }
+    const path = data.location.slice(2);
+    this.clickShortcut({ location: path });
   };
 
   goBack = () => {
@@ -164,12 +160,7 @@ class Modal extends Component {
     const current = stack[stack.length - 1] || {};
     return (
       <Fragment>
-        <ModalContainer
-          role="button"
-          tabIndex="0"
-          onKeyUp={this.clickContainer}
-          onClick={this.clickContainer}
-        >
+        <ModalContainer>
           <ModalContent>
             <LibraryLinksOffset />
             <LibraryLinksContainer>
@@ -191,7 +182,11 @@ class Modal extends Component {
               )}
               </FileTreeContainer>
               {data.isLimited && <WhyNotification />}
-              <CodeExplorer current={current} displayDefault={displayDefault} clickInlineLink={this.clickInlineLink} />
+              <CodeExplorer
+                current={current}
+                displayDefault={displayDefault}
+                clickInlineLink={this.clickInlineLink}
+              />
             </Elements>
             {stack.length > 1 && <BackButton goBack={this.goBack} />}
             <CloseButton toggleModal={toggleModal} />
@@ -225,8 +220,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'Buttons.js',
-    ],
+      'Buttons.js'
+    ]
   },
   {
     line: 5,
@@ -234,8 +229,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'FileExplorer.js',
-    ],
+      'FileExplorer.js'
+    ]
   },
   {
     line: 6,
@@ -243,8 +238,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'styled.js',
-    ],
+      'styled.js'
+    ]
   },
   {
     line: 7,
@@ -252,8 +247,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'CodeExplorer.js',
-    ],
+      'CodeExplorer.js'
+    ]
   },
   {
     line: 8,
@@ -261,8 +256,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'util.js',
-    ],
+      'util.js'
+    ]
   },
   {
     line: 9,
@@ -270,8 +265,8 @@ const links = [
       'src',
       'components',
       'Modal',
-      'WhyNotification.js',
-    ],
+      'WhyNotification.js'
+    ]
   },
   {
     line: 10,
@@ -279,12 +274,12 @@ const links = [
       'src',
       'components',
       'Modal',
-      'LibraryLinks.js',
-    ],
-  },
+      'LibraryLinks.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'propTypes'];
+const libraries = ['react','propTypes'];
 
 export default {
   libraries,

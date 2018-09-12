@@ -43,8 +43,8 @@ const links = [
     location: [
       'src',
       'components',
-      'animations.js',
-    ],
+      'animations.js'
+    ]
   },
   {
     line: 4,
@@ -52,25 +52,25 @@ const links = [
       'src',
       'components',
       'SVG',
-      'SVG.js',
-    ],
+      'SVG.js'
+    ]
   },
   {
     line: 5,
     location: [
       'src',
       'components',
-      'utils.js',
-    ],
+      'utils.js'
+    ]
   },
   {
     line: 6,
     location: [
       'src',
       'components',
-      'tailwind.js',
-    ],
-  },
+      'tailwind.js'
+    ]
+  }
 ];
 
 const libraries = ['react'];

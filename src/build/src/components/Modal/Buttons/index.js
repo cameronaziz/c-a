@@ -10,8 +10,8 @@ const links = [
       'components',
       'Modal',
       'Buttons',
-      'CloseButton.js',
-    ],
+      'CloseButton.js'
+    ]
   },
   {
     line: 2,
@@ -20,9 +20,9 @@ const links = [
       'components',
       'Modal',
       'Buttons',
-      'BackButton.js',
-    ],
-  },
+      'BackButton.js'
+    ]
+  }
 ];
 
 const libraries = [];

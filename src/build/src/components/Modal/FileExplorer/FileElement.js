@@ -10,13 +10,12 @@ const FileElement = ({
   if (selectedPath) {
     currentPath = selectedPath;
   }
-  console.log(currentPath);
   return (
     tree.map((element, index) => (
       <Item
+        key={JSON.stringify(element.path)}
         currentPath={currentPath}
         folderIndex={index}
-        key={index}
         element={element}
         depth={depth}
         currentElementIndex={currentElementIndex}
@@ -49,12 +48,12 @@ const links = [
       'components',
       'Modal',
       'FileExplorer',
-      'Item.js',
-    ],
-  },
+      'Item.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'propTypes'];
+const libraries = ['react','propTypes'];
 
 export default {
   libraries,

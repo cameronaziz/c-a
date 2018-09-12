@@ -31,20 +31,20 @@ const links = [
     location: [
       'src',
       'components',
-      'styled.js',
-    ],
+      'styled.js'
+    ]
   },
   {
     line: 4,
     location: [
       'src',
       'components',
-      'animations.js',
-    ],
-  },
+      'animations.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'svg'];
+const libraries = ['react','svg'];
 
 export default {
   libraries,

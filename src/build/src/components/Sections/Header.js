@@ -7,7 +7,9 @@ const Header = () => (
       <BigTitle>
         Hello. <br /> I&apos;m Cameron Aziz.
       </BigTitle>
-      <Subtitle>I&apos;m a web engineer specializing in full stack Javascript applications. Like this one.</Subtitle>
+      <Subtitle>
+        I&apos;m a web engineer specializing in full stack Javascript applications. Like this one.
+      </Subtitle>
     </Hero>
   </Fragment>
 );
@@ -21,9 +23,9 @@ const links = [
     location: [
       'src',
       'components',
-      'styled.js',
-    ],
-  },
+      'styled.js'
+    ]
+  }
 ];
 
 const libraries = ['react'];

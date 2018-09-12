@@ -37,7 +37,7 @@ export default BackButton;
 
 const links = [];
 
-const libraries = ['react', 'propTypes', 'svg'];
+const libraries = ['react','propTypes','svg'];
 
 export default {
   libraries,

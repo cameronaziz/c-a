@@ -1,17 +1,18 @@
 const code = `export default {
   entering: {
     animationIterationCount: '0',
-    left: '95%',
+    // left: '15%',
   },
   entered: {
     animationIterationCount: '0',
-    left: '86%',
+    // left: '86%',
   },
   exited: {
     animationIterationCount: 'infinite',
-    left: '95%',
+    // left: '95%',
   },
-}`;
+};
+`;
 
 const links = [];
 

@@ -31,6 +31,10 @@ const SVG = ({
 );
 
 SVG.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
   stroke: PropTypes.string,
   fill: PropTypes.string,
   width: PropTypes.number,
@@ -41,6 +45,7 @@ SVG.propTypes = {
 };
 
 SVG.defaultProps = {
+  children: undefined,
   stroke: 'transparent',
   width: 8,
   fill: 'none',
@@ -58,8 +63,8 @@ const links = [
     location: [
       'src',
       'components',
-      'tailwind.js',
-    ],
+      'tailwind.js'
+    ]
   },
   {
     line: 5,
@@ -67,12 +72,12 @@ const links = [
       'src',
       'components',
       'SVG',
-      'icons.js',
-    ],
-  },
+      'icons.js'
+    ]
+  }
 ];
 
-const libraries = ['react', 'propTypes', 'reactEmotion'];
+const libraries = ['react','propTypes','reactEmotion'];
 
 export default {
   libraries,

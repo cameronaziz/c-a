@@ -11,8 +11,8 @@ const links = [
       'Modal',
       'FileExplorer',
       'Icons',
-      'File.js',
-    ],
+      'File.js'
+    ]
   },
   {
     line: 2,
@@ -22,9 +22,9 @@ const links = [
       'Modal',
       'FileExplorer',
       'Icons',
-      'Folder.js',
-    ],
-  },
+      'Folder.js'
+    ]
+  }
 ];
 
 const libraries = [];

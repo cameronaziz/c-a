@@ -2,7 +2,9 @@ const code = `export { default as About } from './About';
 export { default as Contact } from './Contact';
 export { default as Header } from './Header';
 export { default as HoverCircle } from './HoverCircle';
-export { default as transitionStyles } from './transitionStyles';`;
+export { default as transitionStyles } from './transitionStyles';
+export { default as Projects } from './Projects';
+`;
 
 const links = [
   {
@@ -11,8 +13,8 @@ const links = [
       'src',
       'components',
       'Sections',
-      'About.js',
-    ],
+      'About.js'
+    ]
   },
   {
     line: 2,
@@ -20,8 +22,8 @@ const links = [
       'src',
       'components',
       'Sections',
-      'Contact.js',
-    ],
+      'Contact.js'
+    ]
   },
   {
     line: 3,
@@ -29,8 +31,8 @@ const links = [
       'src',
       'components',
       'Sections',
-      'Header.js',
-    ],
+      'Header.js'
+    ]
   },
   {
     line: 4,
@@ -38,9 +40,27 @@ const links = [
       'src',
       'components',
       'Sections',
-      'HoverCircle.js',
-    ],
+      'HoverCircle.js'
+    ]
   },
+  {
+    line: 5,
+    location: [
+      'src',
+      'components',
+      'Sections',
+      'transitionStyles.js'
+    ]
+  },
+  {
+    line: 6,
+    location: [
+      'src',
+      'components',
+      'Sections',
+      'Projects.js'
+    ]
+  }
 ];
 
 const libraries = [];
