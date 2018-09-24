@@ -95,7 +95,7 @@ class Index extends Component {
     return (
       <Fragment>
         <SEO title={title} />
-        <Parallax config={{ friction }} ref={this.parallax} pages={6}>
+        <Parallax config={{ friction }} ref={this.parallax} pages={5}>
           <Divider speed={1} offset={0}>
             <HeaderSVG />
           </Divider>
@@ -114,7 +114,7 @@ class Index extends Component {
           <Divider speed={0.1} offset={2}>
             <LowerSVG />
           </Divider>
-          <Content speed={0.4} offset={3.5}>
+          <Content speed={0.4} offset={3.8}>
             <About toggleModal={this.toggleModal} />
           </Content>
           <Divider fill="#23262b" speed={0.2} offset={3}>
