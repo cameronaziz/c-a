@@ -100,7 +100,7 @@ class Index extends Component {
             <HeaderSVG />
           </Divider>
           <Content speed={0.4} offset={0}>
-            <HoverCircle viewCode={this.viewCode} transitionStyles={this.state.transitionStyles} stopShaking={this.stopHoverCircleShaking} />
+            {/* <HoverCircle viewCode={this.viewCode} transitionStyles={this.state.transitionStyles} stopShaking={this.stopHoverCircleShaking} /> */}
             <Header />
           </Content>
           <DividerMiddle bg="linear-gradient(to right, SlateBlue 0%, DeepSkyBlue 100%)" speed={-0.2} offset={1.1} />
@@ -114,13 +114,13 @@ class Index extends Component {
           <Divider speed={0.1} offset={2}>
             <LowerSVG />
           </Divider>
-          <Content speed={0.4} offset={2.4}>
+          <Content speed={0.4} offset={3}>
             <About toggleModal={this.toggleModal} />
           </Content>
           <Divider fill="#23262b" speed={0.2} offset={3}>
             <BottomSVG />
           </Divider>
-          <Content speed={0.4} offset={3}>
+          <Content speed={0.4} offset={4}>
             <Contact />
           </Content>
           <Divider speed={0.1} offset={3}>

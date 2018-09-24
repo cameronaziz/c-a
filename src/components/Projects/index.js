@@ -7,7 +7,7 @@ import projectList from '../../data/projectList';
 import '../../styles/css/highlight.css';
 
 const Projects = () => (
-  <Content speed={0.4} offset={1.3}>
+  <Content speed={0.4} offset={2}>
     <Inner>
       <Title>Recent Projects</Title>
       <ProjectsWrapper>
