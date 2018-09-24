@@ -95,7 +95,7 @@ class Index extends Component {
     return (
       <Fragment>
         <SEO title={title} />
-        <Parallax config={{ friction }} ref={this.parallax} pages={4}>
+        <Parallax config={{ friction }} ref={this.parallax} pages={6}>
           <Divider speed={1} offset={0}>
             <HeaderSVG />
           </Divider>
