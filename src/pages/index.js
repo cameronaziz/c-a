@@ -114,13 +114,13 @@ class Index extends Component {
           <Divider speed={0.1} offset={2}>
             <LowerSVG />
           </Divider>
-          <Content speed={0.4} offset={3.8}>
+          <Content speed={0.4} offset={4}>
             <About toggleModal={this.toggleModal} />
           </Content>
           <Divider fill="#23262b" speed={0.2} offset={3}>
             <BottomSVG />
           </Divider>
-          <Content speed={0.4} offset={4}>
+          <Content speed={0.4} offset={4.5}>
             <Contact />
           </Content>
           <Divider speed={0.1} offset={3}>
