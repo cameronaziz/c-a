@@ -89,6 +89,7 @@ class Index extends Component {
   }
 
   render() {
+    console.log(this.props);
     const {
       title, modalVisible, modalData, friction,
     } = this.state;

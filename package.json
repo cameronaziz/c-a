@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-portfolio-cara",
-  "description": "Gatsby Starter Portfolio Cara",
+  "name": "cameronaziz",
+  "description": "Cameron Aziz Portfolio Site",
   "version": "1.0.0",
-  "author": "LekoArts <hello@lekoarts.de>",
-  "license": "MIT",
+  "author": "Cameron Aziz",
+  "license": "UNLICENSED",
   "dependencies": {
     "babel-plugin-tailwind": "^0.1.10",
     "emotion": "^9.1.3",
@@ -22,6 +22,7 @@
     "gatsby-source-filesystem": "^2.0.0-alpha.15",
     "gatsby-transformer-remark": "^1.7.44",
     "gatsby-transformer-sharp": "^2.0.1-13",
+    "mobile-detect": "^1.4.3",
     "postcss": "^6.0.22",
     "postcss-cli": "^5.0.0",
     "prop-types": "^15.6.1",
@@ -40,11 +41,6 @@
     "typeface-cantata-one": "^0.0.54",
     "typeface-open-sans": "^0.0.54"
   },
-  "keywords": [
-    "gatsby",
-    "starter",
-    "portfolio"
-  ],
   "scripts": {
     "develop": "gatsby develop -o",
     "build": "gatsby build",
